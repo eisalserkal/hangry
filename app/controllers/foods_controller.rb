@@ -1,6 +1,7 @@
 class FoodsController < ApplicationController
   def index
-    @foods = Food.where(user: current_user)
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @foods = Food.where(restaurant: params[:restaurant_id])
   end
 
   def show
@@ -8,33 +9,38 @@ class FoodsController < ApplicationController
   end
 
   def new
+    @restaurant = Restaurant.find(params[:restaurant_id])
     @food = Food.new
   end
 
   def create
+    @restaurant = Restaurant.find(params[:restaurant_id])
     @food = Food.new(food_params)
-    @food.restaurant = current_user.restaurant.id
+    @food.restaurant = @restaurant
     if @food.save
-      redirect_to food_path(@food)
+      redirect_to restaurant_food_path(@restaurant, @food)
     else
       render :new
     end
   end
 
   def edit
+    @restaurant = Restaurant.find(params[:restaurant_id])
     @food = Food.find(params[:id])
   end
 
   def update
+    @restaurant = Restaurant.find(params[:restaurant_id])
     @food = Food.find(params[:id])
     @food.update(food_params)
-    redirect_to food_path(@food)
+    redirect_to restaurant_food_path(@restaurant, @food)
   end
 
   def destroy
+    @restaurant = Restaurant.find(params[:restaurant_id])
     @food = Food.find(params[:id])
     @food.destroy
-    redirect_to foods_path
+    redirect_to restaurant_foods_path(@restaurant)
   end
 
   private
