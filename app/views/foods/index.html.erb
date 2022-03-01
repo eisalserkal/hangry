@@ -1,0 +1,8 @@
+<h1> Foods Page</h1>
+<div> <% @foods.each do |food| %>
+  <%= food.name %>
+  <%= food.price %>
+  <%= food.description %>
+  <%= food.category %>
+  <% end %>
+</div>
