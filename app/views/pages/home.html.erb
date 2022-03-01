@@ -1,2 +1,29 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<ul class="menu">
+  <li>Starters</li>
+  <li>Main Course</li>
+  <li>Salads</li>
+  <li>Deserts</li>
+</ul>
+<div class="container">
+  <%= render 'shared/card' %>
+</div>
+
+<div class="container">
+  <%= render 'shared/card' %>
+</div>
+<div class="container">
+  <%= render 'shared/card' %>
+</div>
+<div class="container">
+  <%= render 'shared/card' %>
+</div>
+
+<footer class="d-flex justify-content-between p-3">
+  <p class="border border-1 rounded-4 p-2">2</p>
+  <p class="d-flex align-items-center">View Basket</p>
+  <p class="d-flex align-items-center">Price</p>
+</footer>
+<div class="container d-flex justify-content-center">
+<a href="#" class="btn btn-light order">Order</a>
+</div>
