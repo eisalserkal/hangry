@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  resources :restaurants, only: [:create, :new, :destroy, :show] do
+  resources :restaurants do
     resources :covers, only: [:show, :create, :destroy]
     resources :foods
     resources :orders, only: [:index]
