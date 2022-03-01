@@ -1,4 +1,5 @@
 class CoversController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :show ]
 
   def show
     @cover = Cover.find(params[:id])
