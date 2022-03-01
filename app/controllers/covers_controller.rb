@@ -3,6 +3,8 @@ class CoversController < ApplicationController
 
   def show
     @cover = Cover.find(params[:id])
+    @restaurant = @cover.restaurant
+    @foods = @restaurant.foods
   end
 
   def create
