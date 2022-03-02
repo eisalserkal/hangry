@@ -22,7 +22,7 @@ class CoversController < ApplicationController
     @cover = Cover.new(cover_params)
     @cover.restaurant = @restaurant
     if @cover.save
-      redirect_to restaurant_cover_path(@restaurant, @cover)
+      redirect_to dashboard_path
     else
       render :new
     end
@@ -36,7 +36,7 @@ class CoversController < ApplicationController
   def update
     @restaurant = Restaurant.find(params[:restaurant_id])
     @cover.update(cover_params)
-    redirect_to restaurant_cover_path(@restaurant, @cover)
+    redirect_to dashboard_path
 
   end
 
@@ -44,7 +44,7 @@ class CoversController < ApplicationController
     @restaurant = Restaurant.find(params[:restaurant_id])
     @cover = Cover.find(params[:id])
     @cover.destroy
-    redirect_to restaurant_covers_path(@restaurant)
+    redirect_to dashboard_path
   end
 
   private
