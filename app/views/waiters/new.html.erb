@@ -1,5 +1,6 @@
 <%= simple_form_for [ @restaurant, @waiter ], class: 'col-6' do |f| %>
 <%=  f.input :name,
               required: true%>
+<%= f.input :photo, as: :file %>
 <%= f.submit "Create Waiter", class: "btn btn-primary" %>
 <% end %>
