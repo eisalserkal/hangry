@@ -1,4 +1,5 @@
-<h2>Log in</h2>
+<h2 class="text-center mt-2">Log in</h2>
+<div class="d-flex justify-content-center">
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">
@@ -10,11 +11,12 @@
                 required: false,
                 input_html: { autocomplete: "current-password" } %>
     <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+  <div class="text-center">
+    <%= f.button :submit, "Log in", class: "btn-primary" %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
   </div>
+</div>
 <% end %>
-
+<div class="text-center mt-2">
 <%= render "devise/shared/links" %>
+</div>

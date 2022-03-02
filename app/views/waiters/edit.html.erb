@@ -1,0 +1,9 @@
+<%= simple_form_for [ @restaurant, @waiter ], class: 'col-6' do |f| %>
+<%=  f.input :name,
+              required: true%>
+<%= f.submit "Edit Waiter", class: "btn btn-primary" %>
+<% end %>
+
+<p> <%= link_to restaurant_waiter_path(@restaurant, @waiter), method: :delete, data: { confirm: "Are you sure?" } do %>
+                <i class="fa-solid fa-trash"></i>
+              <% end %></p>

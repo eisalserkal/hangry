@@ -1,0 +1,10 @@
+<%= simple_form_for [@restaurant, @cover] do |f| %>
+<%= f.input :table_number,
+              required: true %>
+<%= f.association :waiter %>
+<%= f.submit "Update Cover" %>
+<% end %>
+
+<p> <%= link_to restaurant_cover_path(@restaurant, @cover), method: :delete, data: { confirm: "Are you sure?" } do %>
+                <i class="fa-solid fa-trash"> Delete</i>
+              <% end %></p>

@@ -1,0 +1,7 @@
+<%= simple_form_for @restaurant, class: 'col-6' do |f| %>
+<%=  f.input :name,
+              required: true%>
+<%=  f.input :location,
+              required: true%>
+<%= f.submit "Create Restaurant", class: "btn btn-primary" %>
+<% end %>

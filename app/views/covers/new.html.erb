@@ -1,0 +1,6 @@
+<%= simple_form_for [@restaurant, @cover] do |f| %>
+<%= f.input :table_number,
+              required: true %>
+<%= f.association :waiter %>
+<%= f.submit "Add Cover" %>
+<% end %>

@@ -1,0 +1,15 @@
+<%= simple_form_for [@restaurant, @food], class: 'col-6' do |f| %>
+<%=  f.input :name,
+              required: true%>
+<%=  f.input :price,
+              required: true%>
+<%=  f.input :description,
+              required: true%>
+<%=  f.input :category,
+              required: true%>
+<%= f.submit "Update A Dish!", class: "btn btn-primary" %>
+<% end %>
+
+<p> <%= link_to restaurant_food_path(@restaurant, @food), method: :delete, data: { confirm: "Are you sure?" } do %>
+                <i class="fa-solid fa-trash"> Delete</i>
+              <% end %></p>
