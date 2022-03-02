@@ -1,2 +1,6 @@
 <h1> <%= @waiter.name %></h1>
+<% if @waiter.photo.blank? %>
+  <img src="https://media.istockphoto.com/photos/chef-standing-in-front-of-his-team-picture-id508853937?s=612x612" alt="VR Zone">
+<% else %>
 <%= cl_image_tag @waiter.photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
