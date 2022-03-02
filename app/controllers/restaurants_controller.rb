@@ -3,6 +3,13 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.where(user_id: current_user)
   end
 
+  def dashboard
+    @restaurants = Restaurant.where(user_id: current_user)
+    @covers = Cover.where(restaurant: @restaurants)
+    @waiters = Waiter.where(restaurant: @restaurants)
+    @foods = Food.where(restaurant: @restaurants)
+  end
+
   def show
     @restaurant = Restaurant.find(params[:id])
     @cover = Cover.find(params[:cover_id])
@@ -42,6 +49,6 @@ class RestaurantsController < ApplicationController
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :location)
+    params.require(:restaurant).permit(:name, :location, :photo)
   end
 end

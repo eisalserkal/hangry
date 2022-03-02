@@ -18,7 +18,7 @@ class FoodsController < ApplicationController
     @food = Food.new(food_params)
     @food.restaurant = @restaurant
     if @food.save
-      redirect_to restaurant_food_path(@restaurant, @food)
+      redirect_to dashboard_path
     else
       render :new
     end
@@ -33,19 +33,19 @@ class FoodsController < ApplicationController
     @restaurant = Restaurant.find(params[:restaurant_id])
     @food = Food.find(params[:id])
     @food.update(food_params)
-    redirect_to restaurant_food_path(@restaurant, @food)
+    redirect_to dashboard_path
   end
 
   def destroy
     @restaurant = Restaurant.find(params[:restaurant_id])
     @food = Food.find(params[:id])
     @food.destroy
-    redirect_to restaurant_foods_path(@restaurant)
+    redirect_to dashboard_path
   end
 
   private
 
   def food_params
-    params.require(:food).permit(:name, :price, :description, :category)
+    params.require(:food).permit(:name, :price, :description, :category, :photo)
   end
 end
