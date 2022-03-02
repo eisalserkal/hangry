@@ -1,39 +1,38 @@
 import { Controller } from "@hotwired/stimulus"
-const foodsArray = []
+
 let price = 0
 export default class extends Controller {
-
+  foodsArray = []
   static targets = ["price", "quantity", "modal"]
+  static values = { coverId: Number }
 
   connect() {
     console.log("connected to order controller")
-    console.log(this.modalTarget)
+    console.log(this.coverIdValue)
+    console.log(this.foodsArray)
   }
 
   increase(event) {
 
     let objIndex = -1
-    foodsArray.forEach((obj) => {
+    this.foodsArray.forEach((obj) => {
       if (event.target.id === obj.id) {
-        objIndex = foodsArray.indexOf(obj)
+        objIndex = this.foodsArray.indexOf(obj)
       }
     })
-    console.log (objIndex)
-    if(objIndex !== -1) {
-      foodsArray[objIndex].quantity += 1
+    if (objIndex !== -1) {
+      this.foodsArray[objIndex].quantity += 1
     } else {
-    foodsArray.push({id: event.target.id, quantity: 1, name: event.target.parentElement.querySelector('.name').innerText, description:event.target.parentElement.querySelector('.description').innerText })
+      this.foodsArray.push({ id: event.target.id, quantity: 1, name: event.target.parentElement.querySelector('.name').innerText, description: event.target.parentElement.querySelector('.description').innerText })
+    }
+    this.quantityTarget.innerText = this.foodsArray.length
+    price += parseFloat(event.target.parentElement.querySelector('.price').innerText)
+    this.priceTarget.innerText = price
 
-  }
-  console.log(foodsArray)
-  this.quantityTarget.innerText = foodsArray.length
-  price += parseFloat(event.target.parentElement.querySelector('.price').innerText)
-  this.priceTarget.innerText = price
-
-  console.log(event.target.parentElement.querySelector('.name').innerText)
-  let modalHTML = '<div class="container" >'
-  foodsArray.forEach((obj)=>{
-    modalHTML += `  <div class="card-product col-sm-12 m-2 d-flex justify-content-between">
+    console.log(event.target.parentElement.querySelector('.name').innerText)
+    let modalHTML = '<div class="container" >'
+    this.foodsArray.forEach((obj) => {
+      modalHTML += `  <div class="card-product col-sm-12 m-2 d-flex justify-content-between">
     <div class="card-product-infos">
       <h2>${obj.name}</h2>
       <p>${obj.description}</p>
@@ -43,9 +42,27 @@ export default class extends Controller {
         <p class="fs-4 border border-3 rounded-4 p-1"> ${obj.quantity}</p>
       </div>
     </div>`
-  })
-  modalHTML += ` </div>`
-  this.modalTarget.innerHTML = modalHTML
-}
+    })
+    modalHTML += ` </div>`
+    this.modalTarget.innerHTML = modalHTML
+  }
 
+  postOrder() {
+    const url = '/orders'
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        orders: this.foodsArray,
+        cover_id: this.coverIdValue
+      })
+    }).then(response => response.json())
+      .then(order => {
+        console.log(order);
+        window.location.href = `/orders/${order.id}`;
+      })
+  }
 }
