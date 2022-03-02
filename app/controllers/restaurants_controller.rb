@@ -3,6 +3,13 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.where(user_id: current_user)
   end
 
+  def dashboard
+    @restaurants = Restaurant.where(user_id: current_user)
+    @covers = Cover.where(restaurant: @restaurants)
+    @waiters = Waiter.where(restaurant: @restaurants)
+    @foods = Food.where(restaurant: @restaurants)
+  end
+
   def show
     @restaurant = Restaurant.find(params[:id])
   end

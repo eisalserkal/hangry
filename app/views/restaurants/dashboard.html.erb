@@ -1,0 +1,46 @@
+<%# IF condition for whether user has already a restaurant, or no, which would show the add a restaurant button, and nothing else %>
+<% if current_user.restaurant.present? %>
+<%# Data dashboardpagination controller %>
+<div data-controller="dashboardpagination">
+<ul class="list-inline container-fluid text-center">
+  <li class="list-inline-item" data-action="click->dashboardpagination#restaurant"><a>Restaurant</a></li>
+  <li class="list-inline-item" data-action="click->dashboardpagination#menu"><a>Menu</a></li>
+  <li class="list-inline-item" data-action="click->dashboardpagination#waiter"><a>Waiters</a></li>
+  <li class="list-inline-item" data-action="click->dashboardpagination#cover"><a>Covers</a></li>
+</ul>
+<div data-dashboardpagination-target="restaurant">
+<h1>Restaurants</h1>
+<% @restaurants.each do |restaurant| %>
+<%= restaurant.name %>
+<%= restaurant.location %>
+</div>
+<div class="d-none" data-dashboardpagination-target="menu">
+<h1>Menu Items</h1>
+<%= link_to "Add a Menu Item", new_restaurant_food_path(restaurant), class: "btn btn-primary" %>
+<% @foods.each do |food| %>
+<%= food.name %>
+<%= food.price %>
+<% end %>
+</div>
+<div class="d-none" data-dashboardpagination-target="waiter">
+<h1>Waiters</h1>
+<%= link_to "Add a Waiter", new_restaurant_waiter_path(restaurant), class: "btn btn-primary" %>
+<% @waiters.each do |waiter| %>
+<%= waiter.name %>
+<% end %>
+</div>
+<div class="d-none" data-dashboardpagination-target="cover">
+<h1>Covers</h1>
+<%= link_to "Add a Cover", new_restaurant_cover_path(restaurant), class: "btn btn-primary" %>
+<% @covers.each do |cover| %>
+<%= cover.number %>
+<% end %>
+</div>
+<%# End below is of the restaurants.each as we need to use for the menu and waiters and covers, etc. %>
+<% end %>
+<%# DIV below is of the dashboardpagination controller %>
+</div>
+<% else %>
+<h1>Restaurants</h1>
+<%= link_to "Add a restaurant", new_restaurant_path, class: "btn btn-primary" %>
+<% end %>
