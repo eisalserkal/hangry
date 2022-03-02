@@ -1,7 +1,38 @@
-<h2> <%= @restaurant.name %></h2>
-<h2> <%= @restaurant.location %></h2>
-<% if @restaurant.photo.blank? %>
-  <img src="https://media.istockphoto.com/photos/food-backgrounds-table-filled-with-large-variety-of-food-picture-id1155240408?k=20&m=1155240408&s=612x612&w=0&h=Zvr3TwVQ-wlfBnvGrgJCtv-_P_LUcIK301rCygnirbk=" alt="Food">
-<% else %>
-<%= cl_image_tag @restaurant.photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
+
+<ul class="menu">
+  <li>Starters</li>
+  <li>Main Course</li>
+  <li>Salads</li>
+  <li>Deserts</li>
+</ul>
+<div data-controller="order" data-order-cover-id-value="<%= @cover.id %>">
+  <div class="container" >
+    <% @foods.each do |food| %>
+    <div class="card-product col-sm-12 m-2">
+    <img src="https://static.toiimg.com/thumb/56933159.cms?imgsize=686279&width=800&height=800" />
+    <div class="card-product-infos">
+      <h2 class="name"><%= food.name %></h2>
+      <p class="description"><%= food.description %></p>
+      <h2 class="price"><%= food.price %></h2>
+    </div>
+    <i class="fa-solid fa-plus fs-4 border border-3 rounded-4 p-1" id="<%=food.id%>" data-action="click->order#increase" data-order-target="<%=food.name%>"> </i>
+    </div>
+
+    <% end %>
+  </div>
+
+  <footer class="d-flex justify-content-between p-3">
+    <p class="border border-1 rounded-4 p-3" data-order-target="quantity">0</p>
+      <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#basket">
+      View Basket
+      </button>
+    <div class="d-flex align-items-center">
+      <p>Price:</p><p data-order-target="price">0</p>
+    </div>
+  </footer>
+  <div class="container d-flex justify-content-center">
+    <a href="#" class="btn btn-light order" data-action="click->order#postOrder">Order</a>
+  </div>
+  <%= render 'modal'%>
+</div>
+
