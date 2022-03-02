@@ -46,6 +46,6 @@ class WaitersController < ApplicationController
   private
 
   def waiter_params
-    params.require(:waiter).permit(:name)
+    params.require(:waiter).permit(:name, :photo)
   end
 end

@@ -7,5 +7,6 @@
               required: true%>
 <%=  f.input :category,
               required: true%>
+<%= f.input :photo, as: :file %>
 <%= f.submit "Create A Dish!", class: "btn btn-primary" %>
 <% end %>

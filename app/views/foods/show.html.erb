@@ -2,3 +2,4 @@
 <h2> <%= @food.price %></h2>
 <h2> <%= @food.description %></h2>
 <h2> <%= @food.category %></h2>
+<%= cl_image_tag @food.photo.key, height: 300, width: 400, crop: :fill %>

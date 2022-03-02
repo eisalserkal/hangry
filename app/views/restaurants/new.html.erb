@@ -3,5 +3,6 @@
               required: true%>
 <%=  f.input :location,
               required: true%>
+<%= f.input :photo, as: :file %>
 <%= f.submit "Create Restaurant", class: "btn btn-primary" %>
 <% end %>
