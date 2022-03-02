@@ -3,10 +3,13 @@
 <%# Data dashboardpagination controller %>
 <div data-controller="dashboardpagination">
 <ul class="list-inline container-fluid text-center">
-  <li class="list-inline-item" data-action="click->dashboardpagination#restaurant"><a>Restaurant</a></li>
-  <li class="list-inline-item" data-action="click->dashboardpagination#menu"><a>Menu</a></li>
-  <li class="list-inline-item" data-action="click->dashboardpagination#waiter"><a>Waiters</a></li>
-  <li class="list-inline-item" data-action="click->dashboardpagination#cover"><a>Covers</a></li>
+  <li class="list-inline-item text-muted" data-dashboardpagination-target="restaurantitem" data-action="click->dashboardpagination#restaurant"><a>Restaurant</a></li>
+  <li class="list-inline-item">|</li>
+  <li class="list-inline-item" data-dashboardpagination-target="menuitem" data-action="click->dashboardpagination#menu"><a>Menu</a></li>
+  <li class="list-inline-item">|</li>
+  <li class="list-inline-item" data-dashboardpagination-target="waiteritem" data-action="click->dashboardpagination#waiter"><a>Waiters</a></li>
+  <li class="list-inline-item">|</li>
+  <li class="list-inline-item" data-dashboardpagination-target="coveritem" data-action="click->dashboardpagination#cover"><a>Covers</a></li>
 </ul>
 <div data-dashboardpagination-target="restaurant">
 <h1>Restaurants</h1>
