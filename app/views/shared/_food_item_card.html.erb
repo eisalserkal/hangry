@@ -1,5 +1,3 @@
-
-
 <div class="col-4">
   <div class="card">
       <div class="imgBx">
@@ -20,10 +18,10 @@
         <div class="color">
           <p><%= food.category %></p>
         </div>
-        <%= link_to edit_restaurant_food_path(@restaurant, food) do %>
+        <%= link_to edit_restaurant_food_path(food.restaurant, food) do %>
           <i class="fa-solid fa-pen-to-square"></i>
         <% end %>
-        <%= link_to restaurant_food_path(@restaurant, food), method: :delete, data: { confirm: "Are you sure?" } do %>
+        <%= link_to restaurant_food_path(food.restaurant, food), method: :delete, data: { confirm: "Are you sure?" } do %>
           <i class="fa-solid fa-trash"></i>
         <% end %>
       </div>

@@ -18,19 +18,31 @@
 <%= restaurant.location %>
 </div>
 <div class="d-none" data-dashboardpagination-target="menu">
-<h1>Menu Items</h1>
+<h1 class="text-center">Menu Items</h1>
+<div class="text-center">
 <%= link_to "Add a Menu Item", new_restaurant_food_path(restaurant), class: "btn btn-primary" %>
+</div>
+<div class="container mt-4">
+<div class="row">
 <% @foods.each do |food| %>
-<%= food.name %>
-<%= food.price %>
+<%= render 'shared/food_item_card',food: food %>
+<%# end below should be kept in this position, or a glitch will happen in the pagination %>
 <% end %>
 </div>
+</div>
+</div>
 <div class="d-none" data-dashboardpagination-target="waiter">
-<h1>Waiters</h1>
+<h1 class="text-center">Waiters</h1>
+<div class="text-center">
 <%= link_to "Add a Waiter", new_restaurant_waiter_path(restaurant), class: "btn btn-primary" %>
+</div>
+<div class="container mt-4">
+<div class="row">
 <% @waiters.each do |waiter| %>
-<%= waiter.name %>
+<%= render 'shared/waiter_card',waiter: waiter %>
 <% end %>
+</div>
+</div>
 </div>
 <div class="d-none" data-dashboardpagination-target="cover">
 <h1>Covers</h1>
