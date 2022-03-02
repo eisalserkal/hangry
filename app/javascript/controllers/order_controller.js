@@ -1,15 +1,18 @@
 import { Controller } from "@hotwired/stimulus"
 const foodsArray = []
+let price = 0
 export default class extends Controller {
+
+  static targets = ["price", "quantity"]
 
   connect() {
     console.log("connected to order controller")
   }
 
   increase(event) {
+
     let objIndex = -1
     foodsArray.forEach((obj) => {
-      console.log(event.target.id, obj.id)
       if (event.target.id === obj.id) {
         objIndex = foodsArray.indexOf(obj)
       }
@@ -22,5 +25,8 @@ export default class extends Controller {
 
   }
   console.log(foodsArray)
+  this.quantityTarget.innerText = foodsArray.length
+  price += parseFloat(event.target.parentElement.querySelector('.price').innerText)
+  this.priceTarget.innerText = price
 }
 }
