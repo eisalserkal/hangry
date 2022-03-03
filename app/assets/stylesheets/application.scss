@@ -28,7 +28,7 @@ body {
 
 .menu li {
   float: left;
-  color: rgb(253, 252, 252);
+  color: rgb(61, 58, 58);
   text-align: center;
   padding: 12px;
   text-decoration: none;
@@ -40,6 +40,11 @@ footer {
   width: 100%;
 }
 
+.order {
+  position: absolute!important;
+  bottom: 0!important;
+  width: 100%;
+}
 .btn.order {
   position: absolute;
   bottom: 0px;

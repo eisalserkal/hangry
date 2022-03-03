@@ -28,5 +28,6 @@ class OrdersController < ApplicationController
     @cover = @order.cover
     @waiter = @cover.waiter
     @request = Request.new
+    @receipt = @order.receipt
   end
 end
