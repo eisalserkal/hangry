@@ -12,17 +12,21 @@ class OrdersController < ApplicationController
     @receipt = Receipt.new
     @receipt.save
     @order.receipt = @receipt
-    @order.save
-    params[:orders].each do |order|
-      food_item = OrderItem.new(quantity: order[:quantity], food_id: order[:id])
-      food_item.order = @order
-      food_item.save
-    end
+    if @order.save
+      params[:orders].each do |order|
+        food_item = OrderItem.new(quantity: order[:quantity], food_id: order[:id])
+        food_item.order = @order
+        food_item.save
+      end
 
-    render json: @order
+      render json: @order
+    end
   end
 
   def show
     @order = Order.find(params[:id])
+    @cover = @order.cover
+    @waiter = @cover.waiter
+    @request = Request.new
   end
 end

@@ -22,8 +22,8 @@
                                                                 <% @orders.each do |order| %>
                                                                   <% order.order_items.each do |item| %>
                                                                   <tr>
-                                                                      <td><%= item.food.name %></td>
-                                                                      <td class="alignright">AED<%= item.food.price %></td>
+                                                                      <td><%= item.food.name %> (<%= item.quantity %>)</td>
+                                                                      <td class="alignright">AED<%= item.food.price*item.quantity %></td>
                                                                   </tr>
                                                                   <% end %>
                                                                 <% end %>
@@ -49,4 +49,5 @@
               <td></td>
           </tr>
       </tbody></table>
+  <p><%= link_to "Back to order", "http://localhost:3000/orders/#{@orders[0].id}" %></p>
 </div>

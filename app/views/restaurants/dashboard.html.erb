@@ -10,6 +10,8 @@
   <li class="list-inline-item" data-dashboardpagination-target="waiteritem" data-action="click->dashboardpagination#waiter"><a>Waiters</a></li>
   <li class="list-inline-item">|</li>
   <li class="list-inline-item" data-dashboardpagination-target="coveritem" data-action="click->dashboardpagination#cover"><a>Covers</a></li>
+  <li class="list-inline-item">|</li>
+  <li class="list-inline-item" data-dashboardpagination-target="requestitem" data-action="click->dashboardpagination#request"><a>Requests</a></li>
 </ul>
 <div data-dashboardpagination-target="restaurant">
 <h1>Restaurants</h1>
@@ -48,7 +50,7 @@
 <h1>Covers</h1>
 <%= link_to "Add a Cover", new_restaurant_cover_path(restaurant), class: "btn btn-primary" %>
 <% @covers.each do |cover| %>
-<%= cover.number %>
+<%= cover.table_number %>
 <% end %>
 </div>
 <%# End below is of the restaurants.each as we need to use for the menu and waiters and covers, etc. %>
@@ -59,3 +61,18 @@
 <h1>Restaurants</h1>
 <%= link_to "Add a restaurant", new_restaurant_path, class: "btn btn-primary" %>
 <% end %>
+
+<div class="d-none" data-dashboardpagination-target="request">
+<h1 class="text-center">Requests</h1>
+
+<div class="container mt-4">
+<div class="row">
+<% @requests.each do |request| %>
+    <div class="col-6">
+      <h3>Request received from Table <%= request.order.cover.id %> at <%= request.created_at %></h3>
+      <p><%= request.content %></p>
+    </div>
+<% end %>
+</div>
+</div>
+</div>
