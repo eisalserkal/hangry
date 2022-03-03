@@ -3,8 +3,6 @@
 <%# Data dashboardpagination controller %>
 <div data-controller="dashboardpagination">
 <ul class="list-inline container-fluid text-center">
-  <li class="list-inline-item text-muted" data-dashboardpagination-target="restaurantitem" data-action="click->dashboardpagination#restaurant"><a>Restaurant</a></li>
-  <li class="list-inline-item">|</li>
   <li class="list-inline-item" data-dashboardpagination-target="menuitem" data-action="click->dashboardpagination#menu"><a>Menu</a></li>
   <li class="list-inline-item">|</li>
   <li class="list-inline-item" data-dashboardpagination-target="waiteritem" data-action="click->dashboardpagination#waiter"><a>Waiters</a></li>
@@ -95,11 +93,17 @@
 </div>
 </div>
 <div class="d-none" data-dashboardpagination-target="cover">
-<h1>Covers</h1>
-<%= link_to "Add a Cover", new_restaurant_cover_path(restaurant), class: "btn btn-primary" %>
+<h1 class="text-center">Covers</h1>
+<div class="text-center">
+  <%= link_to "Add a Cover", new_restaurant_cover_path(restaurant), class: "btn btn-primary" %>
+</div>
+<div class="container mt-4">
+<div class="row">
 <% @covers.each do |cover| %>
-<%= cover.number %>
+<%= render 'shared/cover',cover: cover %>
 <% end %>
+</div>
+</div>
 </div>
 <%# End below is of the restaurants.each as we need to use for the menu and waiters and covers, etc. %>
 <% end %>
