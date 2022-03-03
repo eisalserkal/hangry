@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["restaurant", "restaurantitem", "menu", "menuitem", "waiter", "waiteritem", "cover", "coveritem" ]
+  static targets = ["restaurant", "restaurentitem", "menu", "menuitem", "waiter", "waiteritem", "cover", "coveritem"];
   connect() {
     console.log("hello from pagination_controller!")
   }
@@ -16,10 +16,9 @@ export default class extends Controller {
     this.menuitemTarget.classList.remove('text-muted')
     this.waiteritemTarget.classList.remove('text-muted')
     this.coveritemTarget.classList.remove('text-muted')
-    this.restaurantitemTarget.classList.add('text-muted')
-    if (this.restaurantTarget.classList.contains('d-none')) {
-      this.restaurantTarget.classList.remove('d-none')
-    }
+    // this.restaurantitemTarget.classList.add('text-muted')
+    // if (this.restaurantTarget.classList.contains('d-none')) {
+      // this.restaurantTarget.classList.remove('d-none')
   }
 
   menu(event) {
@@ -31,7 +30,7 @@ export default class extends Controller {
     this.menuitemTarget.classList.add('text-muted')
     this.waiteritemTarget.classList.remove('text-muted')
     this.coveritemTarget.classList.remove('text-muted')
-    this.restaurantitemTarget.classList.remove('text-muted')
+    // this.restaurantitemTarget.classList.remove('text-muted')
     if (this.menuTarget.classList.contains('d-none')) {
       this.menuTarget.classList.remove('d-none')
     }
@@ -46,7 +45,7 @@ export default class extends Controller {
     this.menuitemTarget.classList.remove('text-muted')
     this.waiteritemTarget.classList.add('text-muted')
     this.coveritemTarget.classList.remove('text-muted')
-    this.restaurantitemTarget.classList.remove('text-muted')
+    // this.restaurantitemTarget.classList.remove('text-muted')
     if (this.waiterTarget.classList.contains('d-none')) {
       this.waiterTarget.classList.remove('d-none')
     }
@@ -62,10 +61,9 @@ export default class extends Controller {
     this.menuitemTarget.classList.remove('text-muted')
     this.waiteritemTarget.classList.remove('text-muted')
     this.coveritemTarget.classList.add('text-muted')
-    this.restaurantitemTarget.classList.remove('text-muted')
+    // this.restaurantitemTarget.classList.remove('text-muted')
     if (this.coverTarget.classList.contains('d-none')) {
       this.coverTarget.classList.remove('d-none')
     }
   }
-
 }

@@ -1,0 +1,18 @@
+<div class="col-4">
+  <div class="card">
+      <div class="imgBx">
+
+      </div>
+      <div class="contentBx">
+        <h2>Table: <%= cover.table_number %></h2>
+        <h2><%=  %></h2>
+        <%= link_to edit_restaurant_cover_path(cover.restaurant, cover) do %>
+          <i class="fa-solid fa-pen-to-square"></i>
+        <% end %>
+        <%= link_to restaurant_cover_path(cover.restaurant, cover), method: :delete, data: { confirm: "Are you sure?" } do %>
+          <i class="fa-solid fa-trash"></i>
+        <% end %>
+      </div>
+
+  </div>
+</div>
