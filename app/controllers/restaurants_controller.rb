@@ -8,6 +8,7 @@ class RestaurantsController < ApplicationController
     @covers = Cover.where(restaurant: @restaurants)
     @waiters = Waiter.where(restaurant: @restaurants)
     @foods = Food.where(restaurant: @restaurants)
+    @requests = Request.all
   end
 
   def show

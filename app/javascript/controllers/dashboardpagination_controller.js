@@ -1,7 +1,8 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["restaurant", "restaurentitem", "menu", "menuitem", "waiter", "waiteritem", "cover", "coveritem"];
+
+  static targets = ["restaurant", "restaurantitem", "menu", "menuitem", "waiter", "waiteritem", "cover", "coveritem", "request", "requestitem" ]
   connect() {
     console.log("hello from pagination_controller!")
   }
@@ -66,4 +67,24 @@ export default class extends Controller {
       this.coverTarget.classList.remove('d-none')
     }
   }
+
+
+  request(event) {
+    console.log('request')
+    event.preventDefault()
+
+    this.menuTarget.classList.add('d-none')
+    this.waiterTarget.classList.add('d-none')
+    this.restaurantTarget.classList.add('d-none')
+    this.coverTarget.classList.add('d-none')
+    this.menuitemTarget.classList.remove('text-muted')
+    this.waiteritemTarget.classList.remove('text-muted')
+    this.coveritemTarget.classList.add('text-muted')
+    this.restaurantitemTarget.classList.remove('text-muted')
+    if (this.requestTarget.classList.contains('d-none')) {
+      this.requestTarget.classList.remove('d-none')
+    }
+  }
+
+
 }

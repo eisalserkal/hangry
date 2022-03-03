@@ -13,6 +13,21 @@
 
   <% end %>
 
-    <a href="#" class="btn btn-light" >View receipt </a>
-    <a href="#" class="btn btn-light" >Add order </a>
+  <ul>
+    <% if @order.receipt.is_paid == true %>
+    <li>
+      <a href="#" class="btn btn-light text-decoration-none" >Proceed to payment </a>
+    </li>
+    <% end %>
+  <li>
+    <a href="#" class="btn btn-light text-decoration-none" >Add to order </a>
+  </li>
+  </ul>
+  <h3>Your table has been assigned to the waiter <%= @waiter.name %></h3>
+  <h2>Request for assistance from waiter</h2>
+  <%= simple_form_for [@order, @request], class: 'col-6' do |f| %>
+    <%=  f.input :content,
+                  required: true%>
+    <%= f.submit "Send request", class: "btn btn-primary" %>
+    <% end %>
 </div>

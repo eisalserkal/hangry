@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Requests</h1>
+  <% @requests.each do |request| %>
+    <div class="col-6">
+      <h3>Request received from Table <%= request.order.cover.id %> at <%= request.created_at %></h3>
+      <p><%= request.content %></p>
+    </div>
+  <% end %>
+</div>
