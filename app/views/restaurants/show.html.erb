@@ -1,9 +1,8 @@
 
 <ul class="menu">
-  <li>Starters</li>
-  <li>Main Course</li>
-  <li>Salads</li>
-  <li>Deserts</li>
+  <% @categories.each do |category| %>
+    <li><%= category %></li>
+  <% end %>
 </ul>
 <div data-controller="order" data-order-cover-id-value="<%= @cover.id %>">
   <div class="container" >
@@ -35,4 +34,3 @@
   </div>
   <%= render 'modal'%>
 </div>
-
