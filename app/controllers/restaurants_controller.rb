@@ -20,6 +20,17 @@ class RestaurantsController < ApplicationController
       @categories << food.category
     end
     @categories.uniq!
+    @categories_sorted = []
+    @categories.each do |category|
+      if category.downcase == 'starter'
+        @categories_sorted << category
+      end
+    end
+    @categories.each do |category|
+      if category.downcase != 'starter'
+        @categories_sorted << category
+      end
+    end
   end
 
   def new

@@ -2,7 +2,7 @@
 
 <div data-controller="order" data-order-cover-id-value="<%= @cover.id %>">
   <div class="container" >
-    <% @categories.each do |category| %>
+    <% @categories_sorted.each do |category| %>
       <h2><%= category %></h2>
       <% @foods.each do |food| %>
         <% if food.category == category %>
@@ -29,7 +29,7 @@
       <p>Price:</p><p data-order-target="price">0</p>
     </div>
   </footer>
-  <div class="container d-flex justify-content-center">
+  <div class="container d-flex justify-content-center order">
     <a href="#" class="btn btn-light order" data-action="click->order#postOrder">Order</a>
   </div>
   <%= render 'modal'%>
