@@ -64,7 +64,9 @@ export default class extends Controller {
       }
     })
     this.quantityTarget.innerText = this.foodsArray.length
-    price -= parseFloat(event.target.parentElement.querySelector('.price').innerText)
+    if (price > 0) {
+      price -= parseFloat(event.target.parentElement.querySelector('.price').innerText)
+      }
     this.priceTarget.innerText = price
 
     console.log(event.target.parentElement.querySelector('.name1').innerText)
@@ -85,6 +87,16 @@ export default class extends Controller {
     this.modalTarget.innerHTML = modalHTML
   }
 
+  submit() {
+    if (window.location.search.includes('order_id')) {
+      const urlSearchParams = new URLSearchParams(window.location.search);
+      const orderId = urlSearchParams.getAll('order_id')[0]
+      this.patchOrder(orderId)
+    } else {
+      this.postOrder()
+    }
+  }
+
   postOrder() {
     const url = '/orders'
     fetch(url, {
@@ -96,6 +108,25 @@ export default class extends Controller {
       body: JSON.stringify({
         orders: this.foodsArray,
         cover_id: this.coverIdValue
+      })
+    }).then(response => response.json())
+      .then(order => {
+        console.log(order);
+        window.location.href = `/orders/${order.id}`;
+      })
+  }
+
+  patchOrder(orderId) {
+    const url = `/orders/${orderId}`
+    fetch(url, {
+      method: 'PATCH',
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        orders: this.foodsArray,
+        cover_id: this.coverIdValue,
       })
     }).then(response => response.json())
       .then(order => {

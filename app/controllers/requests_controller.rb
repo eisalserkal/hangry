@@ -11,6 +11,12 @@ class RequestsController < ApplicationController
     redirect_to order_path(@order)
   end
 
+  def destroy
+    @request = Request.find(params[:id])
+    @request.destroy
+    redirect_to dashboard_path
+  end
+
   def request_params
     params.require(:request).permit(:content)
   end

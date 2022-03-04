@@ -10,6 +10,8 @@
   <li class="list-inline-item" data-dashboardpagination-target="coveritem" data-action="click->dashboardpagination#cover"><a>Covers</a></li>
   <li class="list-inline-item">|</li>
   <li class="list-inline-item" data-dashboardpagination-target="requestitem" data-action="click->dashboardpagination#request"><a>Requests</a></li>
+  <li class="list-inline-item">|</li>
+  <li class="list-inline-item" data-dashboardpagination-target="orderitem" data-action="click->dashboardpagination#order"><a>Orders</a></li>
 </ul>
 <div data-dashboardpagination-target="restaurant">
 <h1 class="dashboard-h1">My Dashboard</h1>
@@ -111,15 +113,46 @@
 </div>
 
 <div class="d-none" data-dashboardpagination-target="request">
-<h1 class="text-center">Requests</h1>
+
 
 <div class="container mt-4">
 <div class="row">
 <% @requests.each do |request| %>
-    <div class="col-6">
-      <h3>Request received from Table <%= request.order.cover.id %> at <%= request.created_at %></h3>
+    <div class="col-6 bg-light m-4">
+      <p>Request received from Table <%= request.order.cover.id %> </p>
+      <hr>
+      <p>at <%= request.created_at %></p>
+      <hr>
       <p><%= request.content %></p>
+      <hr>
+      <p><%= link_to 'Remove', request_path(request), method: :delete  %></p>
     </div>
+<% end %>
+</div>
+</div>
+</div>
+
+<div class="d-none" data-dashboardpagination-target="order">
+
+
+<div class="container mt-4">
+<div class="row">
+<% @orders_sorted.each do |order| %>
+  <h3>Order #<%= order.id %> received from Table # <%= order.cover.table_number %> at <%= order.created_at %></h3>
+  <% order.order_items.each do |item| %>
+    <div class="card-product col-sm-12 m-2">
+    <img src="https://static.toiimg.com/thumb/56933159.cms?imgsize=686279&width=800&height=800" />
+    <div class="card-product-infos">
+      <h2 ><%= item.food.name %>
+          <% if (item.created_at - order.created_at) > 0.5 %>
+          (Additional)
+          <% end %></h2>
+      <p class="description"><%= item.food.description %></p>
+      <h2 class="price"><%= item.food.price %></h2>
+    </div>
+    <p class=" fs-4 border border-3 rounded-4 p-1"><%= item.quantity %> </p>
+    </div>
+  <% end %>
 <% end %>
 </div>
 </div>

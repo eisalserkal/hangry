@@ -4,7 +4,8 @@ class ReceiptsController < ApplicationController
     @receipt.is_paid = true
     @receipt.save
     @orders = @receipt.orders
-    @cover = @orders[0].cover
+    @order = @orders.first
+    @cover = @order.cover
     @sum = 0
     @orders.each do |order|
       order.order_items.each do |item|

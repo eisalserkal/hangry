@@ -1,13 +1,18 @@
 
 
 <div data-controller="order" data-order-cover-id-value="<%= @cover.id %>">
-  <div class="container" >
+  <div class="container overflow-auto" >
+  <h1 class="text-center">Menu</h1>
     <% @categories_sorted.each do |category| %>
       <h2><%= category %></h2>
       <% @foods.each do |food| %>
         <% if food.category == category %>
           <div class="card-product col-sm-12 m-2">
-            <img src="https://static.toiimg.com/thumb/56933159.cms?imgsize=686279&width=800&height=800" />
+              <% if food.photo.blank? %>
+            <img src="https://media.istockphoto.com/photos/food-backgrounds-table-filled-with-large-variety-of-food-picture-id1155240408?k=20&m=1155240408&s=612x612&w=0&h=Zvr3TwVQ-wlfBnvGrgJCtv-_P_LUcIK301rCygnirbk=" alt="VR Zone">
+            <% else %>
+            <%= cl_image_tag food.photo.key, height: 100, width: 100, crop: :fill %>
+            <% end %>
             <div class="card-product-infos">
               <h2 class="name1"><%= food.name %></h2>
               <p class="description"><%= food.description %></p>
@@ -22,17 +27,17 @@
     <% end %>
   </div>
 
-  <footer class="d-flex justify-content-between p-3">
-    <p class="border border-1 rounded-4 p-3" data-order-target="quantity">0</p>
+  <div class="d-flex justify-content-between p-3">
+    <p class=" p-3" data-order-target="quantity">0</p>
       <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#basket">
       View Basket
       </button>
     <div class="d-flex align-items-center">
       <p>Price:</p><p data-order-target="price">0</p>
     </div>
-  </footer>
+  </div>
   <div class="container d-flex justify-content-center order">
-    <a href="#" class="btn btn-light order" data-action="click->order#postOrder">Order</a>
+    <a href="#" class="btn btn-light order" data-action="click->order#submit">Order</a>
   </div>
   <%= render 'modal'%>
 </div>
