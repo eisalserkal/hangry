@@ -1,6 +1,11 @@
-<%= simple_form_for [@restaurant, @cover] do |f| %>
-<%= f.input :table_number,
-              required: true %>
-<%= f.association :waiter %>
-<%= f.submit "Add Cover" %>
-<% end %>
+<div>
+<h1 class="d-flex justify-content-center mb-3">Add a Cover</h1>
+<div class="d-flex justify-content-center">
+  <%= simple_form_for [@restaurant, @cover] do |f| %>
+  <%= f.input :table_number,
+                required: true %>
+  <%= f.association :waiter %>
+  <%= f.submit "Add Cover", class: "btn btn-primary" %>
+  <% end %>
+</div>
+</div>

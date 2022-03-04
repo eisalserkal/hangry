@@ -1,8 +1,13 @@
-<%= simple_form_for @restaurant, class: 'col-6' do |f| %>
-<%=  f.input :name,
-              required: true%>
-<%=  f.input :location,
-              required: true%>
-<%= f.input :photo, as: :file %>
-<%= f.submit "Create Restaurant", class: "btn btn-primary" %>
-<% end %>
+<div>
+<h1 class="d-flex justify-content-center mb-3">Add a Restaurant to start !</h1>
+<div class="d-flex justify-content-center">
+  <%= simple_form_for @restaurant, class: 'col-6' do |f| %>
+  <%=  f.input :name,
+                required: true%>
+  <%=  f.input :location,
+                required: true%>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit "Create Restaurant", class: "btn btn-primary" %>
+  <% end %>
+  </div>
+</div>
