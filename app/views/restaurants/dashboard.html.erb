@@ -118,9 +118,10 @@
 <div class="container mt-4">
 <div class="row">
 <% @requests.each do |request| %>
-    <div class="col-6">
+    <div class="col-6 bg-light m-4">
       <h3>Request received from Table <%= request.order.cover.id %> at <%= request.created_at %></h3>
       <p><%= request.content %></p>
+      <%= link_to 'Remove', request_path(request), method: :delete  %>
     </div>
 <% end %>
 </div>

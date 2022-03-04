@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :requests, only: [:create]
   end
   resources :receipts, only: [:show]
+  resources :requests, only: [:destroy]
   get "/dashboard", to: "restaurants#dashboard"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
