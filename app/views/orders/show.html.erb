@@ -18,7 +18,7 @@
       </li>
       <% end %>
   <li>
-    <a href="#" class="btn btn-primary" >Add to order </a>
+    <%= link_to 'Add to order', restaurant_path(@restaurant, cover_id: @cover.id, order_id: @order.id) %>
   </li>
   </ul>
   <h3>Your table has been assigned to the waiter <%= @waiter.name %></h3>

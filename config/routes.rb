@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :waiters
     resources :requests, only: [:index]
   end
-  resources :orders, only: [:index, :create, :show] do
+  resources :orders, only: [:index, :create, :update, :show] do
     resources :requests, only: [:create]
   end
   resources :receipts, only: [:show]
