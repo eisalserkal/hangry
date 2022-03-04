@@ -7,13 +7,15 @@
       <% @foods.each do |food| %>
         <% if food.category == category %>
           <div class="card-product col-sm-12 m-2">
-          <img src="https://static.toiimg.com/thumb/56933159.cms?imgsize=686279&width=800&height=800" />
-          <div class="card-product-infos">
-            <h2 class="name"><%= food.name %></h2>
-            <p class="description"><%= food.description %></p>
-            <h2 class="price"><%= food.price %></h2>
-          </div>
-          <i class="fa-solid fa-plus fs-4 border border-3 rounded-4 p-1" id="<%=food.id%>" data-action="click->order#increase" data-order-target="<%=food.name%>"> </i>
+            <img src="https://static.toiimg.com/thumb/56933159.cms?imgsize=686279&width=800&height=800" />
+            <div class="card-product-infos">
+              <h2 class="name1"><%= food.name %></h2>
+              <p class="description"><%= food.description %></p>
+              <h2 class="price"><%= food.price %></h2>
+            </div>
+              <i class="fa-solid fa-plus fs-4 border border-3 rounded-4 p-1" id="<%=food.id%>" data-action="click->order#increase" data-order-target="<%=food.name%>"> </i>
+              <hr>
+              <i class="fa-solid fa-minus fs-4 border border-3 rounded-4 p-1" id="<%=food.id%>" data-action="click->order#decrease"></i>
           </div>
         <% end %>
       <% end %>
