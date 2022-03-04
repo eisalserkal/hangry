@@ -64,7 +64,9 @@ export default class extends Controller {
       }
     })
     this.quantityTarget.innerText = this.foodsArray.length
-    price -= parseFloat(event.target.parentElement.querySelector('.price').innerText)
+    if (price > 0) {
+      price -= parseFloat(event.target.parentElement.querySelector('.price').innerText)
+      }
     this.priceTarget.innerText = price
 
     console.log(event.target.parentElement.querySelector('.name1').innerText)
