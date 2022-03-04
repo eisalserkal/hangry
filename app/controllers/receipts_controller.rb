@@ -1,4 +1,5 @@
 class ReceiptsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :show ]
   def show
     @receipt = Receipt.find(params[:id])
     @receipt.is_paid = true

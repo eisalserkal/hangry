@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :show ]
   def index
     @restaurants = Restaurant.where(user_id: current_user)
   end
