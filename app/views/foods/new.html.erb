@@ -1,13 +1,18 @@
-<%= simple_form_for [@restaurant, @food], class: 'col-6' do |f| %>
-<%=  f.input :name,
-              required: true%>
-<%=  f.input :price,
-              required: true%>
-<%=  f.input :description,
-              required: true%>
-<%=  f.input :category,
-              collection: ["Starter", "Main", "Dessert", "Beverages"],
-              required: true%>
-<%= f.input :photo, as: :file %>
-<%= f.submit "Create A Dish!", class: "btn btn-primary" %>
-<% end %>
+<div>
+<h1 class="d-flex justify-content-center mb-3">Add a Dish</h1>
+<div class="d-flex justify-content-center">
+  <%= simple_form_for [@restaurant, @food], class: 'col-6' do |f| %>
+  <%=  f.input :name,
+                required: true%>
+  <%=  f.input :price,
+                required: true%>
+  <%=  f.input :description,
+                required: true%>
+  <%=  f.input :category,
+                collection: ["Starter", "Main", "Dessert", "Beverages"],
+                required: true%>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit "Create A Dish!", class: "btn btn-primary" %>
+  <% end %>
+  </div>
+</div>
