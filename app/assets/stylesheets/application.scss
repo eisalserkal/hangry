@@ -40,11 +40,7 @@ footer {
   width: 100%;
 }
 
-.order {
-  position: absolute!important;
-  bottom: 0!important;
-  width: 100%;
-}
+
 .btn.order {
   position: absolute;
   bottom: 0px;
@@ -74,6 +70,10 @@ footer {
   position: relative;
 }
 
+.container ul {
+  text-align: center;
+  display: block;
+}
 .container .card{
   margin-bottom: 20px;
   position: relative;
