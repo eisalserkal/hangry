@@ -10,6 +10,8 @@
   <li class="list-inline-item" data-dashboardpagination-target="coveritem" data-action="click->dashboardpagination#cover"><a>Covers</a></li>
   <li class="list-inline-item">|</li>
   <li class="list-inline-item" data-dashboardpagination-target="requestitem" data-action="click->dashboardpagination#request"><a>Requests</a></li>
+  <li class="list-inline-item">|</li>
+  <li class="list-inline-item" data-dashboardpagination-target="orderitem" data-action="click->dashboardpagination#order"><a>Orders</a></li>
 </ul>
 <div data-dashboardpagination-target="restaurant">
 <h1 class="dashboard-h1">My Dashboard</h1>
@@ -127,6 +129,29 @@
       <hr>
       <p><%= link_to 'Remove', request_path(request), method: :delete  %></p>
     </div>
+<% end %>
+</div>
+</div>
+</div>
+
+<div class="d-none" data-dashboardpagination-target="order">
+
+
+<div class="container mt-4">
+<div class="row">
+<% @orders_sorted.each do |order| %>
+  <h3>Order received from Table # <%= order.cover.table_number %> at <%= order.created_at %></h3>
+  <% order.order_items.each do |item| %>
+    <div class="card-product col-sm-12 m-2">
+    <img src="https://static.toiimg.com/thumb/56933159.cms?imgsize=686279&width=800&height=800" />
+    <div class="card-product-infos">
+      <h2 ><%= item.food.name %></h2>
+      <p class="description"><%= item.food.description %></p>
+      <h2 class="price"><%= item.food.price %></h2>
+    </div>
+    <p class=" fs-4 border border-3 rounded-4 p-1"><%= item.quantity %> </p>
+    </div>
+  <% end %>
 <% end %>
 </div>
 </div>
