@@ -1,4 +1,5 @@
 class RequestsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :index, :create ]
   def index
     @requests = Request.all
   end
