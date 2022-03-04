@@ -34,6 +34,7 @@ class CoversController < ApplicationController
   end
 
   def update
+    @cover = Cover.find(params[:id])
     @restaurant = Restaurant.find(params[:restaurant_id])
     @cover.update(cover_params)
     redirect_to dashboard_path

@@ -5,7 +5,7 @@
       </div>
       <div class="contentBx">
         <h2>Table: <%= cover.table_number %></h2>
-        <h2><%=  %></h2>
+        <h3>Assigned to: <%=  cover.waiter.name  %></h3>
         <%= link_to edit_restaurant_cover_path(cover.restaurant, cover) do %>
           <i class="fa-solid fa-pen-to-square"></i>
         <% end %>
