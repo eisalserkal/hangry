@@ -3,7 +3,7 @@
 <% if current_user.restaurant.present? %>
 <%# Data dashboardpagination controller %>
 
-  <div data-controller="dashboardpagination ">
+  <div data-controller="dashboardpagination" data-controller="restaurant-subscription" data-restaurant-subscription-restaurant-id-value="<%= @restaurant.id %>">
     <ul class="list-inline container-fluid text-center">
       <li class="list-inline-item" data-dashboardpagination-target="menuitem" data-action="click->dashboardpagination#menu"><a>Menu</a></li>
       <li class="list-inline-item">|</li>
@@ -116,7 +116,16 @@
       </div>
     </div>
 
-    <div data-controller="restaurant-subscription" data-restaurant-subscription-restaurant-id-value="<%= @restaurant.id %>">
+      <div class="d-none" data-dashboardpagination-target="order">
+        <div class="container mt-4" data-restaurant-subscription-target="order">
+          <div class="row">
+            <% @orders_sorted.each do |order| %>
+              <%= render "orders/order", order: order %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
       <div class="d-none" data-dashboardpagination-target="request">
         <div class="container mt-4" data-restaurant-subscription-target="request">
           <div class="row">
@@ -126,17 +135,6 @@
           </div>
         </div>
       </div>
-
-      <div class="d-none"  data-dashboardpagination-target="order">
-        <div class="container mt-4" data-restaurant-subscription-target="order"  >
-          <div class="row">
-            <% @orders_sorted.each do |order| %>
-              <%= render "orders/order", order: order %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <%# End below is of the restaurants.each as we need to use for the menu and waiters and covers, etc. %>
     <% end %>
