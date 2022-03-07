@@ -29,15 +29,15 @@
 
   <div class="d-flex justify-content-between p-3">
     <p class=" p-3" data-order-target="quantity">0</p>
-      <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#basket">
+      <button type="button" class="btn mb-3" data-bs-toggle="modal" data-bs-target="#basket">
       View Basket
       </button>
     <div class="d-flex align-items-center">
       <p>Price:</p><p data-order-target="price">0</p>
     </div>
   </div>
-  <div class="container d-flex justify-content-center order">
-    <a href="#" class="btn btn-light order" data-action="click->order#submit">Order</a>
+  <div class="container d-flex justify-content-center order mt-3">
+    <a href="#" class="btn order" data-action="click->order#submit">Order</a>
   </div>
   <%= render 'modal'%>
 </div>
