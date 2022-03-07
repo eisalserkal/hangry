@@ -115,18 +115,10 @@
 <div class="d-none" data-dashboardpagination-target="request">
 
 
-<div class="container mt-4">
+<div class="container mt-4" data-restaurant-subscription-target="request" data-controller="restaurant-subscription" data-restaurant-subscription-restaurant-id-value="<%= @restaurant.id %>">
 <div class="row">
-<% @requests.each do |request| %>
-    <div class="col-6 bg-light m-4">
-      <p>Request received from Table <%= request.order.cover.id %> </p>
-      <hr>
-      <p>at <%= request.created_at %></p>
-      <hr>
-      <p><%= request.content %></p>
-      <hr>
-      <p><%= link_to 'Remove', request_path(request), method: :delete  %></p>
-    </div>
+<% @requests_sorted.each do |request| %>
+<%= render "requests/request", request: request %>
 <% end %>
 </div>
 </div>

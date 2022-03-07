@@ -6,10 +6,16 @@ class RequestsController < ApplicationController
 
   def create
     @order = Order.find(params[:order_id])
+    @restaurant = @order.cover.restaurant
     @request = Request.new(request_params)
     @request.order = @order
-    @request.save
-    redirect_to order_path(@order)
+    if @request.save
+      RestaurantChannel.broadcast_to(
+        @restaurant,
+        render_to_string(partial: "request", locals: {request: @request})
+      )
+      redirect_to order_path(@order)
+    end
   end
 
   def destroy
