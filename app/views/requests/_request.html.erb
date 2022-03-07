@@ -5,8 +5,8 @@
     <div class="notifications__item">
 
       <div class="notifications__item__content">
-        <span class="notifications__item__title">Request received from Table <%= request.order.cover.id %> </span>
-        <span class="notifications__item__message"><%= request.content %></span>
+        <span class="notifications__item__title">Table: <%= request.order.cover.id %> </span>
+        <strong><span class="notifications__item__message"><%= request.content %></span></strong>
         <span class="notifications__item__message">at <%= request.created_at %></span>
         <span class="notifications__item__message d-none" id="demo"><%= request.id %></span>
       </div>

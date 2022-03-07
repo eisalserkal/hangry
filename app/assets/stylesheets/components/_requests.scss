@@ -42,12 +42,13 @@
   letter-spacing: 2px;
   font-family: 'atvice', sans-serif;
   font-size: 17px;
+  margin-bottom: 10px;
 }
 
 .notifications__item__message {
   font-family: Roboto, sans-serif;
   font-size: 14px;
-  color: #929292;
+  color: black;
 }
 
 .notifications__item__option {
@@ -76,7 +77,7 @@
 * Animation part
 */
 .notifications__item:hover {
-  background-color: #f7f7f7;
+  background-color: #fadc33;
   transform: scale( 0.95 );
 }
 
@@ -99,7 +100,7 @@
 }
 
 .notifications__item.delete {
-  background-color: #c93d4d;
+  background-color: #e0243a;
   animation: deleteAnimation 1.5s cubic-bezier(0, 0, 0, 1.12) forwards;
   animation-delay: .6s;
 }
