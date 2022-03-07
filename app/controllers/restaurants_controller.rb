@@ -9,7 +9,13 @@ class RestaurantsController < ApplicationController
     @covers = Cover.where(restaurant: @restaurants)
     @waiters = Waiter.where(restaurant: @restaurants)
     @foods = Food.where(restaurant: @restaurants)
+    @restaurant = @restaurants.first
     @requests = Request.all
+    @requests_array = []
+    @requests.each do |request|
+      @requests_array << request
+    end
+    @requests_sorted = @requests_array.sort_by { |request| request.created_at }.reverse
     @orders = []
     @covers.each do |cover|
       cover.orders.each do |order|

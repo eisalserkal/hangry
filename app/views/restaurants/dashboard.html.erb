@@ -115,9 +115,9 @@
 <div class="d-none" data-dashboardpagination-target="request">
 
 
-<div class="container mt-4">
+<div class="container mt-4" data-restaurant-subscription-target="request" data-controller="restaurant-subscription" data-restaurant-subscription-restaurant-id-value="<%= @restaurant.id %>">
 <div class="row">
-<% @requests.each do |request| %>
+<% @requests_sorted.each do |request| %>
 <%= render "requests/request", request: request %>
 <% end %>
 </div>
