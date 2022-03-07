@@ -1,9 +1,23 @@
-<div class="col-6 bg-light m-4">
-  <p>Request received from Table <%= request.order.cover.id %> </p>
-  <hr>
-  <p>at <%= request.created_at %></p>
-  <hr>
-  <p><%= request.content %></p>
-  <hr>
-  <p><%= link_to 'Remove', request_path(request), method: :delete  %></p>
+<div class="wrapper">
+
+  <div class="notifications">
+
+    <div class="notifications__item">
+
+      <div class="notifications__item__content">
+        <span class="notifications__item__title">Request received from Table <%= request.order.cover.id %> </span>
+        <span class="notifications__item__message"><%= request.content %></span>
+        <span class="notifications__item__message">at <%= request.created_at %></span>
+        <span class="notifications__item__message d-none" id="demo"><%= request.id %></span>
+      </div>
+
+      <div>
+        <div class="notifications__item__option archive js-option">
+          <i class="fas fa-folder"></i>
+        </div>
+        <div class="notifications__item__option delete js-option">
+          <i class="fas fa-trash"></i>
+        </div>
+      </div>
+  </div>
 </div>
