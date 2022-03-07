@@ -22,15 +22,15 @@
   <ul class="list-unstyled">
     <% if @order.receipt.is_paid != true %>
       <li>
-        <%= link_to 'Proceed to payment', receipt_path(@receipt), :class => "btn btn-primary mb-3" %>
+        <%= link_to 'Proceed to payment', receipt_path(@receipt), :class => "btn mb-3" %>
       </li>
 
       <li>
-        <%= link_to 'Add to order', restaurant_path(@restaurant, cover_id: @cover.id, order_id: @order.id), :class => "btn btn-primary" %>
+        <%= link_to 'Add to order', restaurant_path(@restaurant, cover_id: @cover.id, order_id: @order.id), :class => "btn" %>
       </li>
       <% else %>
       <li>
-        <%= link_to 'Back to menu', restaurant_path(@restaurant, cover_id: @cover.id), :class => "btn btn-primary" %>
+        <%= link_to 'Back to menu', restaurant_path(@restaurant, cover_id: @cover.id), :class => "btn" %>
       </li>
       <% end %>
 
@@ -42,6 +42,6 @@
 
     <%=  f.input :content,
                   required: true%>
-    <%= f.submit "Send request", class: "btn btn-primary" %>
+    <%= f.submit "Send request", class: "btn" %>
     <% end %>
 </div>

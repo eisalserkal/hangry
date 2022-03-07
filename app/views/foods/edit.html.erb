@@ -8,7 +8,7 @@
 <%=  f.input :category,
               required: true%>
 <%= f.input :photo, as: :file %>
-<%= f.submit "Update A Dish!", class: "btn btn-primary" %>
+<%= f.submit "Update A Dish!", class: "btn" %>
 <% end %>
 
 <p> <%= link_to restaurant_food_path(@restaurant, @food), method: :delete, data: { confirm: "Are you sure?" } do %>
