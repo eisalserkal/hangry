@@ -113,6 +113,7 @@ export default class extends Controller {
     this.waiterTarget.classList.add('d-none')
     this.restaurantTarget.classList.add('d-none')
     this.coverTarget.classList.add('d-none')
+    this.requestTarget.classList.add('d-none')
     this.menuitemTarget.classList.remove('text-muted')
     this.waiteritemTarget.classList.remove('text-muted')
     this.coveritemTarget.classList.remove('text-muted')
