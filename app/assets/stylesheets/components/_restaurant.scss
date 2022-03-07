@@ -455,9 +455,6 @@ animation02
     height: 100%;
 }
 .double_wrapper02{
-    position: relative;
-    width: 100%;
-    height: 100%;
     animation: double_content forwards;
     opacity: 0;
 }
@@ -467,6 +464,7 @@ animation02
     border-radius: 50%;
     overflow: hidden;
 }
+
 // .double_wrapper01::before {
 //     content: "";
 //     display: block;

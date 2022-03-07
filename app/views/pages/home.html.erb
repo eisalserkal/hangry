@@ -5,7 +5,7 @@
                 <div class="col d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex d-xxl-flex align-items-center align-items-sm-center align-items-md-center align-items-lg-center align-items-xl-center align-items-xxl-center">
                     <h1><strong>For you:</strong><br>Quality Dining Experience</h1>
                 </div>
-                <div class="col d-xxl-flex justify-content-xxl-center"><%= image_tag "hangrylogo-removebg-preview.png", class: "img-fluid", style: "max-height: 50vh;" %></div>
+                <div class="col d-xxl-flex justify-content-xxl-center"><%= image_tag "hangrylogo-removebg-preview.png", class: "img-fluid", style: "max-height: 50vh; max-width: 50vh;" %></div>
             </div>
         </div>
 </section>
@@ -54,14 +54,14 @@
 <section>
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6 order-lg-1">
-                    <div class="text-center">
-                      <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary btn-lg" %><br />
+                <div class="col-12">
+                    <div class="text-center p-5">
+                        <h2 class="display-4">Stop being hangry<br>Sign Up Today.</h2>
                     </div>
                 </div>
-                <div class="col-lg-6 order-lg-2">
-                    <div class="p-5">
-                        <h2 class="display-4">Stop being hangry<br>Sign Up Today.</h2>
+                <div class="col-12">
+                    <div class="text-center p-5">
+                      <%= link_to "Sign up", new_user_registration_path, class: "btn btn-lg" %><br />
                     </div>
                 </div>
             </div>
