@@ -1,5 +1,14 @@
-(function(){
+import { Controller } from "@hotwired/stimulus"
 
+export default class extends Controller {
+
+  connect() {
+    this.funcName()
+  }
+
+
+    funcName = () => (function(){
+      console.log('inside function')
   /*
   * Get all the buttons actions
   */
@@ -71,3 +80,5 @@
   }
 
 })()
+
+}
