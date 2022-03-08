@@ -20,7 +20,7 @@
       <h1 class="dashboard-h1">My Dashboard</h1>
       <div>
         <section class="d-flex d-lg-flex justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 100vh;background: radial-gradient(rgb(224,207,57), var(--bs-yellow) 50%, rgb(252,164,31) 100%);">
-          <% @restaurants.each do |restaurant| %>
+          <%# @restaurants.each do |restaurant| %>
 
             <div class="animation01">
                 <div class="rhombus_small">
@@ -60,9 +60,9 @@
                     <div class="double_wrapper02 gray02"><div class="double_wrapper01 gray01"></div></div>
                     <div class="double_wrapper02 orange02"><div class="double_wrapper01 orange01"></div></div>
                 </div>
-                  <div class="name">
+                <div class="name">
                     <div class="d-flex justify-content-center">
-                      <h1 class="gradient-text">Welcome <%= restaurant.name %> !</h1>
+                      <h1 class="gradient-text">Welcome <%= @restaurant.name %> !</h1>
                     </div>
                     <%# <span class="name_circle01"></span>
                     <span class="name_circle02"></span> %>
@@ -76,7 +76,7 @@
     <div class="d-none" data-dashboardpagination-target="menu">
       <h1 class="text-center">Menu Items</h1>
       <div class="text-center">
-        <%= link_to "Add a Menu Item", new_restaurant_food_path(restaurant), class: "btn" %>
+        <%= link_to "Add a Menu Item", new_restaurant_food_path(@restaurant), class: "btn" %>
       </div>
       <div class="container mt-4">
         <div class="row">
@@ -91,7 +91,7 @@
     <div class="d-none" data-dashboardpagination-target="waiter">
       <h1 class="text-center">Waiters</h1>
       <div class="text-center">
-        <%= link_to "Add a Waiter", new_restaurant_waiter_path(restaurant), class: "btn" %>
+        <%= link_to "Add a Waiter", new_restaurant_waiter_path(@restaurant), class: "btn" %>
       </div>
       <div class="container mt-4">
         <div class="row">
@@ -105,21 +105,12 @@
     <div class="d-none" data-dashboardpagination-target="cover">
       <h1 class="text-center">Covers</h1>
       <div class="text-center">
-        <%= link_to "Add a Cover", new_restaurant_cover_path(restaurant), class: "btn" %>
+        <%= link_to "Add a Cover", new_restaurant_cover_path(@restaurant), class: "btn" %>
       </div>
       <div class="container mt-4">
         <div class="row">
           <% @covers.each do |cover| %>
             <%= render 'shared/cover',cover: cover %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="d-none" data-dashboardpagination-target="order">
-      <div class="container mt-4" data-restaurant-subscription-target="order">
-        <div class="row">
-          <% @orders_sorted.each do |order| %>
-            <%= render "orders/order", order: order %>
           <% end %>
         </div>
       </div>
@@ -133,9 +124,21 @@
           <% end %>
         </div>
       </div>
+
     </div>
+    <div class="d-none" data-dashboardpagination-target="order">
+      <div class="container mt-4" data-restaurant-subscription-target="order">
+        <div class="row">
+          <% @orders_sorted.each do |order| %>
+            <%= render "orders/order", order: order %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+
     <%# End below is of the restaurants.each as we need to use for the menu and waiters and covers, etc. %>
-    <% end %>
+    <%# end %>
     <%# DIV below is of the dashboardpagination controller %>
   </div>
 
