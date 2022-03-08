@@ -1,15 +1,34 @@
-<h3>Order #<%= order.id %> received from Table # <%= order.cover.table_number %> at <%= order.created_at %></h3>
 <% order.order_items.each do |item| %>
-  <div class="card-product col-sm-12 m-2">
-  <img src="https://static.toiimg.com/thumb/56933159.cms?imgsize=686279&width=800&height=800" />
-  <div class="card-product-infos">
-    <h2 ><%= item.food.name %>
-        <% if (item.created_at - order.created_at) > 0.5 %>
-        (Additional)
-        <% end %></h2>
-    <p class="description"><%= item.food.description %></p>
-    <h2 class="price"><%= item.food.price %></h2>
+<% if item.status == "Submitted" %>
+  <div class="wrapper" data-controller='orders'>
+
+    <div class="notifications">
+
+      <div class="notifications__item">
+        <div class="notifications__item__avatar">
+          <% if item.food.photo.blank? %>
+            <img src="https://media.istockphoto.com/photos/food-backgrounds-table-filled-with-large-variety-of-food-picture-id1155240408?k=20&m=1155240408&s=612x612&w=0&h=Zvr3TwVQ-wlfBnvGrgJCtv-_P_LUcIK301rCygnirbk=" alt="VR Zone">
+            <% else %>
+            <%= cl_image_tag item.food.photo.key%>
+            <% end %>
+        </div>
+        <div class="notifications__item__content">
+          <span class="notifications__item__title">Order #<%= order.id %></span>
+          <strong><span class="notifications__item__message"><%= item.food.name %>
+          <% if (item.created_at - order.created_at) > 0.5 %>
+          (Additional)
+          <% end %></span></strong>
+          <span class="notifications__item__message">Table #<%= order.cover.id %></span>
+          <span class="notifications__item__message">Quantity: <%= item.quantity %></span>
+          <span class="notifications__item__message d-none" id="demo"><%= item.id %></span>
+        </div>
+
+        <div>
+          <div class="notifications__item__option archive js-option">
+            <i class="fas fa-folder"></i>
+          </div>
+        </div>
+    </div>
   </div>
-  <p class=" fs-4 border border-3 rounded-4 p-1"><%= item.quantity %> </p>
-  </div>
+<% end %>
 <% end %>
