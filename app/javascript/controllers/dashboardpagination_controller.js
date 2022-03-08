@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
 
-  static targets = ["restaurant", "restaurantitem", "menu", "menuitem", "waiter", "waiteritem", "cover", "coveritem", "request", "requestitem", "order", "orderitem" ]
+  static targets = ["restaurant", "restaurantitem", "menu", "menuitem", "waiter", "waiteritem", "cover", "coveritem", "request", "requestitem", "order", "orderitem", "ordernotif", "requestnotif" ]
   connect() {
     console.log("hello from pagination_controller!")
   }
@@ -103,6 +103,7 @@ export default class extends Controller {
     if (this.requestTarget.classList.contains('d-none')) {
       this.requestTarget.classList.remove('d-none')
     }
+    this.requestnotifTarget.classList.add('d-none')
   }
 
   order(event) {
@@ -123,6 +124,7 @@ export default class extends Controller {
     if (this.orderTarget.classList.contains('d-none')) {
       this.orderTarget.classList.remove('d-none')
     }
+    this.ordernotifTarget.classList.add('d-none')
   }
 
 
