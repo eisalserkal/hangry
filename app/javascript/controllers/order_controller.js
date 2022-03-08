@@ -28,6 +28,9 @@ export default class extends Controller {
     this.quantityTarget.innerText = this.foodsArray.length
     price += parseFloat(event.target.parentElement.querySelector('.price').innerText)
     this.priceTarget.innerText = price
+    event.target.parentElement.querySelectorAll('.quantity').forEach((element) => {
+      element.innerText = (parseInt(element.innerText)) + 1;
+    })
 
     console.log(event.target.parentElement.querySelector('.name1').innerText)
     let modalHTML = '<div class="container" >'
@@ -48,7 +51,6 @@ export default class extends Controller {
   }
 
   decrease(event) {
-    console.log(event)
     let objIndex = -1
     this.foodsArray.forEach((obj) => {
       if (event.target.id === obj.id) {
@@ -64,8 +66,12 @@ export default class extends Controller {
       }
     })
     this.quantityTarget.innerText = this.foodsArray.length
-    if (price > 0) {
+    if ( parseInt(event.target.parentElement.querySelector('.quantity').innerText) > 0 ) {
       price -= parseFloat(event.target.parentElement.querySelector('.price').innerText)
+      event.target.parentElement.querySelectorAll('.quantity').forEach((element) => {
+        element.innerText = (parseInt(element.innerText)) - 1;
+        console.log(element.innerText)
+      })
       }
     this.priceTarget.innerText = price
 

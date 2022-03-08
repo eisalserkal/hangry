@@ -13,5 +13,16 @@ class ReceiptsController < ApplicationController
         @sum += item.food.price * item.quantity
       end
     end
+
+    @item_hashes_array = []
+    @orders.each do |order|
+      order.order_items.each do |item|
+        @item_hashes_array << {name: item.food.name, quantity: item.quantity, price: item.food.price}
+      end
+    end
+
+    @item_hashes_grouped = @item_hashes_array.group_by {|h| h[:name]}.map do |k, v|
+      {name: k, quantity: v.inject(0){|s,h| s + h[:quantity] } }
+    end
   end
 end
