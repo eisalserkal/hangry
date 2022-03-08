@@ -8,13 +8,6 @@ export default class extends Controller {
 
   connect() {
 
-    if (this.orderitemTarget.classList.contains('text-muted')) {
-      this.ordernotifTarget.classList.add('d-none')
-    }
-
-    if (this.requestitemTarget.classList.contains('text-muted')) {
-      this.requestnotifTarget.classList.add('d-none')
-    }
 
     this.channel = consumer.subscriptions.create(
       { channel: "RestaurantChannel", id: this.restaurantIdValue },
@@ -24,12 +17,12 @@ export default class extends Controller {
           console.log(data)
           if (data.includes("Order")) {
             this.orderTarget.insertAdjacentHTML("afterbegin", data)
-            if (this.requestitemTarget.classList.contains('text-muted')) {
+            if (!this.orderitemTarget.classList.contains('text-muted')) {
               this.ordernotifTarget.classList.remove('d-none')
             }
           } else {
             this.requestTarget.insertAdjacentHTML("afterbegin", data)
-            if (this.orderitemTarget.classList.contains('text-muted')) {
+            if (!this.requestitemTarget.classList.contains('text-muted')) {
               this.requestnotifTarget.classList.remove('d-none')
             }
           }
@@ -38,4 +31,6 @@ export default class extends Controller {
     )
     console.log(`Subscribed to the restaurant channel with the id ${this.restaurantIdValue}.`)
   }
+
+
 }
