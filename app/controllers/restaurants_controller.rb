@@ -23,6 +23,7 @@ class RestaurantsController < ApplicationController
       end
     end
     @orders_sorted = @orders.sort_by { |order| order.created_at }.reverse
+
   end
 
   def show

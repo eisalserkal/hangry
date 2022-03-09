@@ -16,6 +16,11 @@ class OrderItemsController < ApplicationController
   def update
     @order_item = OrderItem.find(params[:id])
     @order_item.update(order_item_params)
+    @order = @order_item.order
+    OrderChannel.broadcast_to(
+      @order,
+      @order_item.id.to_s
+    )
   end
 
   private

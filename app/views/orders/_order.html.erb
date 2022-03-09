@@ -1,6 +1,6 @@
 <% order.order_items.each do |item| %>
 <% if item.status == "Submitted" %>
-  <div class="wrapper" data-controller='orders'>
+  <div class="wrapper" data-controller='orders' data-orders-item-id-value="<%= item.id %>">
 
     <div class="notifications">
 
@@ -24,7 +24,7 @@
         </div>
 
         <div>
-          <div class="notifications__item__option archive js-option">
+          <div class="notifications__item__option archive js-option" data-action="click->orders#update">
             <i class="fas fa-folder"></i>
           </div>
         </div>

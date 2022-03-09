@@ -1,4 +1,4 @@
-
+<% if @receipt.is_paid == nil %>
 <div class="container" >
     <h1 class="text-center">Receipt</h1>
       <table class="body-wrap">
@@ -48,4 +48,21 @@
           </tr>
       </tbody></table>
   <p class="text-center"><%= link_to "Back to order", order_path(@order), :class => "btn mb-3" %></p>
+  <div class="text-center">
+  <button id="pay" class="btn">Pay</button>
+  </div>
 </div>
+<script src="https://js.stripe.com/v3/"></script>
+      <script>
+        const paymentButton = document.getElementById('pay');
+        paymentButton.addEventListener('click', () => {
+          const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
+          stripe.redirectToCheckout({
+            sessionId: '<%= @receipt.checkout_session_id %>'
+          });
+        });
+      </script>
+<% else %>
+<%= image_tag "cat-flying-cat.gif", class:"rounded mx-auto d-block mb-5", style: 'height:253px;width:400px;' %>
+<h2 class="text-center">Thank you for dining with us!</h2>
+<% end %>
