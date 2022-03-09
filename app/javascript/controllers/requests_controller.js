@@ -82,3 +82,69 @@ export default class extends Controller {
 })()
 
 }
+
+
+// import { Controller } from "@hotwired/stimulus"
+
+// export default class extends Controller {
+
+//   static values = { requestId: Number }
+
+//   update(e) {
+//     this.clickBtn = e.currentTarget
+//     this.notificationCard = this.clickBtn.parentNode.parentNode
+//     this.animate(this.requestIdValue)
+//   }
+
+
+//   animate = (requestId) => {
+
+//     const fetchCall = (requestId) => this.fetchApp(requestId)
+//     const notificationCard = this.notificationCard
+
+//     requestAnimationFrame( function(){
+//       fetchCall(requestId);
+
+//         /*
+//         * Add transition
+//         * That smoothly remove the blank space
+//         * Leaves by the deleted notification card
+//         */
+//         window.setTimeout( function( ){
+//           requestAnimationFrame( function() {
+//             notificationCard.style.transition = 'all .4s ease';
+//             notificationCard.style.height = 0;
+//             notificationCard.style.margin = 0;
+//             notificationCard.style.padding = 0;
+//           });
+
+//           /*
+//           * Delete definitely the animation card
+//           */
+//           window.setTimeout( function( ){
+//             notificationCard.parentNode.removeChild( notificationCard );
+//           }, 1500 );
+//         }, 1500 );
+//     });
+//   }
+
+//    fetchApp = (requestId) => {
+//     var token = $('meta[name=csrf-token]').attr('content');
+//     if( this.clickBtn.classList.contains( 'archive' ) ){
+//       this.notificationCard.classList.add( 'archive' );
+//     } else if( this.clickBtn.classList.contains( 'delete' ) ){
+//       this.notificationCard.classList.add( 'delete' );
+//       console.log(requestId)
+//       fetch(`/requests/${requestId}`, {
+//         method: 'DELETE',
+//         headers: {
+//           "Content-Type": "application/json",
+//           'X-CSRF-Token': token
+//       },
+//       })
+//       .then(res => res.text()) // or res.json()
+//       .then(res => res )
+//     }
+//   }
+
+// }
