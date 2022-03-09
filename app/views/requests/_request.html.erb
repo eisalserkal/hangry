@@ -1,4 +1,4 @@
-<div class="wrapper" data-controller='requests'>
+<div class="wrapper" data-controller='requests'  data-requests-request-id-value="<%= request.id %>">
 
   <div class="notifications">
 
@@ -15,7 +15,7 @@
         <div class="notifications__item__option archive js-option">
           <i class="fas fa-folder"></i>
         </div>
-        <div class="notifications__item__option delete js-option">
+        <div class="notifications__item__option delete js-option" data-action="click->requests#update">
           <i class="fas fa-trash"></i>
         </div>
       </div>

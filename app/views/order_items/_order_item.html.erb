@@ -1,0 +1,17 @@
+<div class="card-product col-sm-12 m-2">
+  <% if item.food.photo.blank? %>
+  <img src="https://media.istockphoto.com/photos/food-backgrounds-table-filled-with-large-variety-of-food-picture-id1155240408?k=20&m=1155240408&s=612x612&w=0&h=Zvr3TwVQ-wlfBnvGrgJCtv-_P_LUcIK301rCygnirbk=" alt="VR Zone">
+  <% else %>
+  <%= cl_image_tag item.food.photo.key, height: 100, width: 100, crop: :fill %>
+  <% end %>
+<div class="card-product-infos">
+  <h2 ><%= item.food.name %>
+  <% if (item.created_at - @order.created_at) > 0.5 %>
+    (Additional)
+    <% end %></h2>
+  <p class="description"><%= item.food.description %></p>
+  <h2 class="price"><%= item.food.price %></h2>
+</div>
+<p class="accepted" id="<%= item.id %>"></p>
+<p class=" fs-4 border border-3 rounded-4 p-1"><%= item.quantity %> </p>
+</div>

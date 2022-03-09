@@ -2,12 +2,14 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
 
-  connect() {
+  static values = { requestId: Number }
+
+  update() {
     this.funcName()
   }
 
 
-    funcName = () => (function(){
+  funcName = () => (function(){
       console.log('inside function')
   /*
   * Get all the buttons actions
@@ -29,7 +31,7 @@ export default class extends Controller {
       * Execute the delete or Archive animation
       */
       requestAnimationFrame( function(){
-
+        console.log('deleteing from requests')
         archiveOrDelete( clickBtn, notificationCard );
 
         /*

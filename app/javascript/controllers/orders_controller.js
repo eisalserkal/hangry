@@ -2,13 +2,17 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
 
-  connect() {
-    this.funcName()
+  static values = { itemId: Number }
+
+  update() {
+    console.log(this.itemIdValue)
+    this.funcName(this.itemIdValue)
   }
 
 
-    funcName = () => (function(){
+  funcName = (itemId) => (function(){
       console.log('inside function')
+      console.log(itemId)
   /*
   * Get all the buttons actions
   */
@@ -29,7 +33,7 @@ export default class extends Controller {
       * Execute the delete or Archive animation
       */
       requestAnimationFrame( function(){
-
+        console.log(`this ${itemId}`)
         archiveOrDelete( clickBtn, notificationCard );
 
         /*
@@ -64,17 +68,17 @@ export default class extends Controller {
   var archiveOrDelete = function( clickBtn, notificationCard ){
     if( clickBtn.classList.contains( 'archive' ) ){
       notificationCard.classList.add( 'archive' );
-      let requestId = document.getElementById( 'demo' ).textContent;
-      fetch(`/order_items/${requestId}`, {
-      method: 'PATCH',
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-        'X-CSRF-Token': token
+      console.log(itemId)
+      fetch(`/order_items/${itemId}`, {
+        method: 'PATCH',
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+          'X-CSRF-Token': token
       },
-      body: JSON.stringify({
-        status: 'On the way',
-      })
+        body: JSON.stringify({
+          status: 'On the way',
+        })
       })
       .then(res => res.json()) // or res.json()
       .then(res => console.log(res))
