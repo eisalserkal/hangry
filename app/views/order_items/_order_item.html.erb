@@ -12,6 +12,10 @@
   <p class="description"><%= item.food.description %></p>
   <h2 class="price"><%= item.food.price %></h2>
 </div>
-<p class="accepted" id="<%= item.id %>"></p>
+<% if item.status == "On the way" %>
+  <i class="fa-solid fa-check fs-3 accepted" id="<%= item.id %>"></i>
+<% else %>
+  <i class="fa-solid fa-check fs-3 accepted d-none" id="<%= item.id %>"></i>
+<% end %>
 <p class=" fs-4 border border-3 rounded-4 p-1"><%= item.quantity %> </p>
 </div>
