@@ -40,9 +40,9 @@ export default class extends Controller {
       <h2>${obj.name}</h2>
       <p>${obj.description}</p>
     </div>
-      <div class="mr-2">
+      <div class="mr-2" style="margin-right: 17px">
         <h2>Quantity</h2>
-        <p class="fs-4 border border-3 rounded-4 p-1"> ${obj.quantity}</p>
+        <p class="fs-4 border border-3 rounded-4 p-1 text-center"> ${obj.quantity}</p>
       </div>
     </div>`
     })
