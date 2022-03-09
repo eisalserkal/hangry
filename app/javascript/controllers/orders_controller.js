@@ -4,37 +4,20 @@ export default class extends Controller {
 
   static values = { itemId: Number }
 
-  update() {
-    console.log(this.itemIdValue)
-    this.funcName(this.itemIdValue)
+  update(e) {
+    this.clickBtn = e.currentTarget
+    this.notificationCard = this.clickBtn.parentNode.parentNode
+    this.animate(this.itemIdValue)
   }
 
 
-  funcName = (itemId) => (function(){
-      console.log('inside function')
-      console.log(itemId)
-  /*
-  * Get all the buttons actions
-  */
-  let optionBtns = document.querySelectorAll( '.js-option' );
+  animate = (itemId) => {
 
-  var token = $('meta[name=csrf-token]').attr('content');
+    const fetchCall = (itemId) => this.fetchApp(itemId)
+    const notificationCard = this.notificationCard
 
-  for(var i = 0; i < optionBtns.length; i++ ) {
-
-    /*
-    * When click to a button
-    */
-    optionBtns[i].addEventListener( 'click', function ( e ){
-
-      var notificationCard = this.parentNode.parentNode;
-      var clickBtn = this;
-      /*
-      * Execute the delete or Archive animation
-      */
-      requestAnimationFrame( function(){
-        console.log(`this ${itemId}`)
-        archiveOrDelete( clickBtn, notificationCard );
+    requestAnimationFrame( function(){
+      fetchCall(itemId);
 
         /*
         * Add transition
@@ -56,18 +39,14 @@ export default class extends Controller {
             notificationCard.parentNode.removeChild( notificationCard );
           }, 1500 );
         }, 1500 );
-      });
-    })
+    });
   }
 
-  /*
-  * Function that adds
-  * delete or archive class
-  * To a notification card
-  */
-  var archiveOrDelete = function( clickBtn, notificationCard ){
-    if( clickBtn.classList.contains( 'archive' ) ){
-      notificationCard.classList.add( 'archive' );
+   fetchApp = (itemId) => {
+    var token = $('meta[name=csrf-token]').attr('content');
+
+    if( this.clickBtn.classList.contains( 'archive' ) ){
+      this.notificationCard.classList.add( 'archive' );
       console.log(itemId)
       fetch(`/order_items/${itemId}`, {
         method: 'PATCH',
@@ -80,13 +59,11 @@ export default class extends Controller {
           status: 'On the way',
         })
       })
-      .then(res => res.json()) // or res.json()
-      .then(res => console.log(res))
-    } else if( clickBtn.classList.contains( 'delete' ) ){
-      notificationCard.classList.add( 'delete' );
+      .then(res => res.text()) // or res.json()
+      .then(res => res )
+    } else if( this.clickBtn.classList.contains( 'delete' ) ){
+      this.notificationCard.classList.add( 'delete' );
     }
   }
-
-})()
 
 }
