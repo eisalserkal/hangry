@@ -12,6 +12,7 @@ export default class extends Controller {
       { received: data =>
         document.querySelectorAll('.accepted').forEach((element) => {
           if (parseInt(element.id) === parseInt(data)) {
+            element.nextElementSibling.classList.add('d-none')
             element.classList.remove('d-none')
           }
         })

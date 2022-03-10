@@ -16,6 +16,9 @@
   <i class="fa-solid fa-check fs-3 accepted" id="<%= item.id %>"></i>
 <% else %>
   <i class="fa-solid fa-check fs-3 accepted d-none" id="<%= item.id %>"></i>
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
 <% end %>
 <p class="fs-4 rounded-4 p-4 text-center"><%= item.quantity %> </p>
 </div>
