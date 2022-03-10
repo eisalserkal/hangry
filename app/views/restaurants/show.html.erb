@@ -9,19 +9,20 @@
       <% @foods.each do |food| %>
         <% if food.category == category %>
           <div class="card-product col-sm-12 m-2">
-              <% if food.photo.blank? %>
-            <img src="https://media.istockphoto.com/photos/food-backgrounds-table-filled-with-large-variety-of-food-picture-id1155240408?k=20&m=1155240408&s=612x612&w=0&h=Zvr3TwVQ-wlfBnvGrgJCtv-_P_LUcIK301rCygnirbk=" alt="VR Zone">
+            <% if food.photo.blank? %>
+              <img src="https://media.istockphoto.com/photos/food-backgrounds-table-filled-with-large-variety-of-food-picture-id1155240408?k=20&m=1155240408&s=612x612&w=0&h=Zvr3TwVQ-wlfBnvGrgJCtv-_P_LUcIK301rCygnirbk=" alt="VR Zone">
             <% else %>
-            <%= cl_image_tag food.photo.key, height: 100, width: 100, crop: :fill %>
+              <%= cl_image_tag food.photo.key, height: 100, width: 100, crop: :fill %>
             <% end %>
-            <div class="card-product-infos">
+            <div class="card-product-infos flex-grow-1">
               <h2 class="name1"><%= food.name %></h2>
               <p class="description"><%= food.description %></p>
               <h2 class="price"><%= food.price %></h2>
             </div>
-              <p class="quantity d-none">0</p><i class="button fa-solid fa-plus fs-4 border border-3 rounded-4 p-1" id="<%=food.id%>" data-action="click->order#increase" data-order-target="<%=food.name%>"> </i>
-              <hr>
-              <p class="quantity d-none">0</p><i class="button fa-solid fa-minus fs-4 border border-3 rounded-4 p-1" id="<%=food.id%>" data-action="click->order#decrease"></i>
+            <div>
+              <p class="quantity d-none">0</p><i class="button fa-solid fa-plus fs-4 border border-3 rounded-4 p-1 m-2 d-block" id="<%=food.id%>" data-action="click->order#increase" data-order-target="<%=food.name%>"> </i>
+              <p class="quantity d-none">0</p><i class="button fa-solid fa-minus fs-4 border border-3 rounded-4 p-1 m-2 d-block" id="<%=food.id%>" data-action="click->order#decrease"></i>
+            </div>
           </div>
         <% end %>
       <% end %>
