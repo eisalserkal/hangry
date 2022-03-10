@@ -6,31 +6,38 @@
   <% end %>
   <ul class="d-flex list-unstyled justify-content-evenly" style="margin-top: 30px">
     <% if @order.receipt.is_paid != true %>
-      <li>
-        <%= link_to receipt_path(@receipt), :class => "btn mb-3" do %>
-        <i class="fa-solid fa-credit-card"></i>  Proceed to Payment
-        <% end %>
-      </li>
+
 
       <li>
         <%= link_to restaurant_path(@restaurant, cover_id: @cover.id, order_id: @order.id), :class => "btn" do %>
          <i class="fa-solid fa-utensils"></i> Order More
          <% end %>
       </li>
+
+      <li>
+        <%= link_to receipt_path(@receipt), :class => "btn mb-3" do %>
+        <i class="fa-solid fa-credit-card"></i>  Checkout
+        <% end %>
+      </li>
+
       <% else %>
+
+
       <li>
         <%= link_to 'Back to menu', restaurant_path(@restaurant, cover_id: @cover.id), :class => "btn" %>
       </li>
       <% end %>
 
   </ul>
-  <h3>Your table has been assigned to <strong><%= @waiter.name %></strong> </h3>
-  <hr>
-  <h4>Request assistance from <%= @waiter.name %> </h4>
-  <%= simple_form_for [@order, @request], class: 'col-6' do |f| %>
+  <div class="container">
+    <h3><i class="fa-solid fa-bell-concierge"></i> <strong><%= @waiter.name %></strong> </h3>
+    <h4>Ask anything </h4>
+    <%= simple_form_for [@order, @request], class: 'col-6' do |f| %>
 
-    <%=  f.input :content,
-                  required: true%>
-    <%= f.submit "Send request", class: "btn" %>
-    <% end %>
+      <%=  f.input :content,
+                    label: false,
+                    required: true%>
+      <%= f.submit "Send request", class: "btn" %>
+      <% end %>
+  </div>
 </div>
