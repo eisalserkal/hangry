@@ -42,6 +42,7 @@
   color: white;
   background-color: #fd0d5fd4;
   border: #fd0d5fd4;
+  border-radius: 5px;
   &:hover{
     color: #ffea83;
     i{
@@ -57,7 +58,7 @@ i {
 
 .btn.order {
   bottom: 0px;
-  width: 80%;
+  width: 81%;
 }
 
 .btn.basket {
@@ -98,6 +99,10 @@ i {
   background-color: black !important;
 }
 
+.btn.more {
+  padding: 20px 25px;
+}
+
 .btn-request {
   color: black;
   background-color: gold;
@@ -108,4 +113,5 @@ i {
 
 .btn.checkout {
   background-color: black !important;
+  padding: 20px 25px;
 }
