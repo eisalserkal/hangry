@@ -47,16 +47,16 @@
               <td></td>
           </tr>
       </tbody></table>
-
 </div>
 
 <div class="container">
-  <p class="text-center"><%= link_to order_path(@order), :class => "btn mb-3" do %>
+ <p class="text-center"><%= link_to order_path(@order), :class => "btn rc mb-3" do %>
+
   <i class="fa-solid fa-utensils"></i> Back to order
   <% end %>
   </p>
   <div class="text-center">
-  <button id="pay" class="btn"><i class="fa-solid fa-credit-card"></i>Pay</button>
+  <button id="pay" class="btn pay"><i class="fa-solid fa-credit-card"></i>Pay</button>
   </div>
 </div>
 <script src="https://js.stripe.com/v3/"></script>
