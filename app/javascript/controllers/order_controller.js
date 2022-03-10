@@ -32,10 +32,10 @@ export default class extends Controller {
       element.innerText = (parseInt(element.innerText)) + 1;
     })
 
-    console.log(event.target.parentElement.parentElement.querySelector('.name1').innerText)
-    let modalHTML = '<div class="container" >'
+    console.log(event.target.parentElement.querySelector('.name1').innerText)
+    let modalHTML = '<div>'
     this.foodsArray.forEach((obj) => {
-      modalHTML += `  <div class="card-product col-sm-12 m-2 d-flex justify-content-between">
+      modalHTML += `  <div class="card-product col-sm-12 d-flex justify-content-between">
     <div class="card-product-infos">
       <h2>${obj.name}</h2>
       <p>${obj.description}</p>

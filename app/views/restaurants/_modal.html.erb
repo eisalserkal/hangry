@@ -2,14 +2,18 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="basketLabel">Your basket</h5>
+        <h5 class="modal-title" id="basketLabel">Place Your Order</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" data-order-target="modal">
       </div>
       <div class="modal-footer">
-        <div class="container d-flex justify-content-center order mt-3">
-          <a href="#" class="btn order" data-action="click->order#submit">Order</a>
+        <div class="container d-flex justify-content-center order confirmation mt-3">
+          <a href="#" class="btn order" data-action="click->order#submit"> <i class="fa-solid fa-circle-check"></i>
+          <div class="d-flex">
+            <p><p style="margin-right: 5px">Total Price:</p><p data-order-target="price" style="margin-right: 5px">0</p>AED</p>
+          </div>
+            </a>
         </div>
       </div>
     </div>

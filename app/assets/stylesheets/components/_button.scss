@@ -36,3 +36,53 @@
   opacity: 1;
   transition: 0s
 }
+
+
+.btn {
+  color: white;
+  background-color: #fd0d5fd4;
+  border: #fd0d5fd4;
+  &:hover{
+    color: #ffea83;
+    i{
+      color: #ffea83;
+    }
+  }
+}
+
+i {
+  margin-right: 5px;
+  display: block;
+}
+
+.btn.order {
+  bottom: 0px;
+  width: 80%;
+}
+
+.btn.basket {
+  border-radius: 100px;
+  padding-left: 19px !important;
+  width: 50%;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.order a {
+  justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.confirmation a {
+    border-radius: 100px;
+   display: flex;
+   justify-content: space-between;
+   padding-right: 57px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.confirmation i {
+  font-size: 25px;
+}
