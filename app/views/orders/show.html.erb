@@ -9,13 +9,13 @@
 
 
       <li>
-        <%= link_to restaurant_path(@restaurant, cover_id: @cover.id, order_id: @order.id), :class => "btn" do %>
+        <%= link_to restaurant_path(@restaurant, cover_id: @cover.id, order_id: @order.id), :class => "btn py-2 rounded-pill" do %>
          <i class="fa-solid fa-utensils"></i> Order More
          <% end %>
       </li>
 
       <li>
-        <%= link_to receipt_path(@receipt), :class => "btn mb-3" do %>
+        <%= link_to receipt_path(@receipt), :class => "btn mb-3 py-2 rounded-pill bg-secondary" do %>
         <i class="fa-solid fa-credit-card"></i>  Checkout
         <% end %>
       </li>
@@ -24,7 +24,7 @@
 
 
       <li>
-        <%= link_to 'Back to menu', restaurant_path(@restaurant, cover_id: @cover.id), :class => "btn" %>
+        <%= link_to 'Back to menu', restaurant_path(@restaurant, cover_id: @cover.id), :class => "btn " %>
       </li>
       <% end %>
 
@@ -37,7 +37,7 @@
       <%=  f.input :content,
                     label: false,
                     required: true%>
-      <%= f.submit "Send request", class: "btn" %>
+      <%= f.submit "Send request", class: "btn btn-request" %>
       <% end %>
   </div>
 </div>
