@@ -8,6 +8,15 @@ export default class extends Controller {
     this.clickBtn = e.currentTarget
     this.notificationCard = this.clickBtn.parentNode.parentNode
     this.animate(this.itemIdValue)
+
+    let pending = document.getElementById("pendi")
+    let pendingValue = parseInt(pending.innerText)
+    console.log(pendingValue)
+    pending.innerText = pendingValue - 1
+    let processed = document.getElementById("procc")
+    let processedValue = parseInt(processed.innerText)
+    console.log(processedValue)
+    processed.innerText = processedValue + 1
   }
 
 

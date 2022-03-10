@@ -142,21 +142,45 @@
     </div>
 
     <div class="d-none" data-dashboardpagination-target="request">
-      <div class="container mt-4" data-restaurant-subscription-target="request">
+      <div class="container mt-4">
         <div class="row">
+          <div class="col-4">
+            <div class="wrapper">
+              <div class="container" data-controller="requests">
+                <h1>Pending Requests:</h1>
+                <h1 class="display-4" id="pend">30</h1>
+                <h1 class="mt-3">Processed Requests:</h1>
+                <h1 class="display-4" id="proc">15</h1>
+              </div>
+            </div>
+          </div>
+          <div class="col-8" data-restaurant-subscription-target="request">
           <% @requests_sorted.each do |request| %>
             <%= render "requests/request", request: request %>
           <% end %>
+          </div>
         </div>
       </div>
 
     </div>
     <div class="d-none" data-dashboardpagination-target="order">
-      <div class="container mt-4" data-restaurant-subscription-target="order">
+      <div class="container mt-4">
         <div class="row">
+          <div class="col-4">
+            <div class="wrapper">
+              <div class="container" data-controller="requests">
+                <h1>Pending Orders:</h1>
+                <h1 class="display-4" id="pendi">30</h1>
+                <h1 class="mt-3">Processed Order:</h1>
+                <h1 class="display-4" id="procc">15</h1>
+              </div>
+            </div>
+          </div>
+            <div class="col-8" data-restaurant-subscription-target="order">
           <% @orders_sorted.each do |order| %>
             <%= render "orders/order", order: order %>
           <% end %>
+            </div>
         </div>
       </div>
     </div>

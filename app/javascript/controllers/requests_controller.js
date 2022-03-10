@@ -14,6 +14,9 @@ export default class extends Controller {
   */
   let optionBtns = document.querySelectorAll( '.js-option' );
 
+  let pending = document.getElementById("pend")
+  let processed = document.getElementById("proc")
+
   var token = $('meta[name=csrf-token]').attr('content');
 
   for(var i = 0; i < optionBtns.length; i++ ) {
@@ -64,6 +67,8 @@ export default class extends Controller {
   var archiveOrDelete = function( clickBtn, notificationCard ){
     if( clickBtn.classList.contains( 'archive' ) ){
       notificationCard.classList.add( 'archive' );
+      pending.innerText = "29"
+      processed.innerText = "16"
     } else if( clickBtn.classList.contains( 'delete' ) ){
       notificationCard.classList.add( 'delete' );
       let requestId = document.getElementById( 'demo' ).textContent;
