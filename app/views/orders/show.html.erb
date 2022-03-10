@@ -1,21 +1,21 @@
 
 <div class="container" data-controller="order-subscription" data-order-subscription-order-id-value="<%= @order.id %>" >
-<h1 class="text-center">Your order</h1>
+<h1 class="text-center" style="margin-bottom: 20px">Your order</h1>
   <% @order.order_items.each do |item| %>
     <%= render 'order_items/order_item', item: item %>
   <% end %>
-  <ul class="d-flex list-unstyled justify-content-evenly" style="margin-top: 30px">
+  <ul class="d-flex list-unstyled justify-content-between" style="margin-top: 30px">
     <% if @order.receipt.is_paid != true %>
 
 
       <li>
-        <%= link_to restaurant_path(@restaurant, cover_id: @cover.id, order_id: @order.id), :class => "btn py-2 rounded-pill" do %>
+        <%= link_to restaurant_path(@restaurant, cover_id: @cover.id, order_id: @order.id), :class => "btn more rounded-pill" do %>
          <i class="fa-solid fa-utensils"></i> Order More
          <% end %>
       </li>
 
       <li>
-        <%= link_to receipt_path(@receipt), :class => "btn mb-3 py-2 rounded-pill checkout" do %>
+        <%= link_to receipt_path(@receipt), :class => "btn mb-3 rounded-pill checkout" do %>
         <i class="fa-solid fa-credit-card"></i>  Checkout
         <% end %>
       </li>
@@ -29,6 +29,7 @@
       <% end %>
 
   </ul>
+  <hr>
   <div class="container">
     <h3><i class="fa-solid fa-bell-concierge"></i> <strong><%= @waiter.name %></strong> </h3>
     <h4>Ask anything </h4>
