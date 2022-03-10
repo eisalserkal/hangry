@@ -4,9 +4,10 @@ import consumer from "../channels/consumer"
 export default class extends Controller {
 
   static values = { restaurantId: Number }
-  static targets = ["order", "request", "orderitem", "requestitem", "requestnotif", "ordernotif"]
+  static targets = ["order", "request", "orderitem", "requestitem", "requestnotif", "ordernotif", "audio"]
 
   connect() {
+
 
 
     this.channel = consumer.subscriptions.create(
@@ -19,11 +20,13 @@ export default class extends Controller {
             this.orderTarget.insertAdjacentHTML("afterbegin", data)
             if (!this.orderitemTarget.classList.contains('text-muted')) {
               this.ordernotifTarget.classList.remove('d-none')
+              this.audioTarget.play()
             }
           } else {
             this.requestTarget.insertAdjacentHTML("afterbegin", data)
             if (!this.requestitemTarget.classList.contains('text-muted')) {
               this.requestnotifTarget.classList.remove('d-none')
+              this.audioTarget.play()
             }
           }
         }

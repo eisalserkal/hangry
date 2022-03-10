@@ -13,7 +13,7 @@ export default class extends Controller {
   }
 
   increase(event) {
-
+    console.log(event.target.parentElement.parentElement.querySelector('.description').innerText)
     let objIndex = -1
     this.foodsArray.forEach((obj) => {
       if (event.target.id === obj.id) {
@@ -23,26 +23,26 @@ export default class extends Controller {
     if (objIndex !== -1) {
       this.foodsArray[objIndex].quantity += 1
     } else {
-      this.foodsArray.push({ id: event.target.id, quantity: 1, name: event.target.parentElement.querySelector('.name1').innerText, description: event.target.parentElement.querySelector('.description').innerText })
+      this.foodsArray.push({ id: event.target.id, quantity: 1, name: event.target.parentElement.parentElement.querySelector('.name1').innerText, description: event.target.parentElement.parentElement.querySelector('.description').innerText })
     }
     this.quantityTarget.innerText = this.foodsArray.length
-    price += parseFloat(event.target.parentElement.querySelector('.price').innerText)
+    price += parseFloat(event.target.parentElement.parentElement.querySelector('.price').innerText)
     this.priceTarget.innerText = price
     event.target.parentElement.querySelectorAll('.quantity').forEach((element) => {
       element.innerText = (parseInt(element.innerText)) + 1;
     })
 
-    console.log(event.target.parentElement.querySelector('.name1').innerText)
+    console.log(event.target.parentElement.parentElement.querySelector('.name1').innerText)
     let modalHTML = '<div>'
     this.foodsArray.forEach((obj) => {
-      modalHTML += `  <div class="card-product col-sm-12 d-flex justify-content-between">
+      modalHTML += `  <div class="card-product col-sm-12 d-flex justify-content-between no-shadow">
     <div class="card-product-infos">
       <h2>${obj.name}</h2>
       <p>${obj.description}</p>
     </div>
       <div class="mr-2" style="margin-right: 17px">
         <h2>Quantity</h2>
-        <p class="fs-4 border border-3 rounded-4 p-1 text-center"> ${obj.quantity}</p>
+        <p class="fs-4 rounded-4 p-1 text-center"> ${obj.quantity}</p>
       </div>
     </div>`
     })
@@ -66,8 +66,8 @@ export default class extends Controller {
       }
     })
     this.quantityTarget.innerText = this.foodsArray.length
-    if ( parseInt(event.target.parentElement.querySelector('.quantity').innerText) > 0 ) {
-      price -= parseFloat(event.target.parentElement.querySelector('.price').innerText)
+    if ( parseInt(event.target.parentElement.parentElement.querySelector('.quantity').innerText) > 0 ) {
+      price -= parseFloat(event.target.parentElement.parentElement.querySelector('.price').innerText)
       event.target.parentElement.querySelectorAll('.quantity').forEach((element) => {
         element.innerText = (parseInt(element.innerText)) - 1;
         console.log(element.innerText)
@@ -75,17 +75,17 @@ export default class extends Controller {
       }
     this.priceTarget.innerText = price
 
-    console.log(event.target.parentElement.querySelector('.name1').innerText)
-    let modalHTML = '<div class="container" >'
+    console.log(event.target.parentElement.parentElement.querySelector('.name1').innerText)
+    let modalHTML = '<div>'
     this.foodsArray.forEach((obj) => {
-      modalHTML += `  <div class="card-product col-sm-12 m-2 d-flex justify-content-between">
+      modalHTML += `  <div class="card-product col-sm-12 d-flex justify-content-between no-shadow">
     <div class="card-product-infos">
       <h2>${obj.name}</h2>
       <p>${obj.description}</p>
     </div>
-      <div class="mr-2">
+      <div class="mr-2" style="margin-right: 17px">
         <h2>Quantity</h2>
-        <p class="fs-4 border border-3 rounded-4 p-1"> ${obj.quantity}</p>
+        <p class="fs-4 rounded-4 p-1 text-center"> ${obj.quantity}</p>
       </div>
     </div>`
     })

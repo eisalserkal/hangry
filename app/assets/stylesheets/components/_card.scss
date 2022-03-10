@@ -2,7 +2,7 @@
 
 .card-product {
   overflow: hidden;
-  height: 100px;
+  height: 120px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
@@ -30,10 +30,10 @@
   margin-bottom: 0;
 }
 
-.card-product>p {
-  position: absolute;
-  right: 20px;
-}
+// .card-product>p {
+//   position: absolute;
+//   right: 20px;
+// }
 
 .card-product .card-product-infos {
   padding: 16px;
@@ -44,10 +44,10 @@
   height: 100%;
 }
 
-.card-product i {
-  position: absolute;
-  right: 30px;
-}
+// .card-product i {
+//   position: absolute;
+//   right: 30px;
+// }
 
 .accepted {
   position: absolute!important;
