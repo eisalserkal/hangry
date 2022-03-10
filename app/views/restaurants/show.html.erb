@@ -2,19 +2,19 @@
 
 <div data-controller="order" data-order-cover-id-value="<%= @cover.id %>">
   <div class="container overflow-auto" >
-  <h1 class="text-center">Menu</h1>
+  <h1 style="text-transform: uppercase" class="text-center">Menu</h1>
   <hr>
     <% @categories_sorted.each do |category| %>
-      <h2 class="text-center mt-3"><%= category %></h2>
+      <h2 class="text-start mt-5"><%= category %></h2>
       <% @foods.each do |food| %>
         <% if food.category == category %>
-          <div class="card-product col-sm-12 m-2">
+          <div class="card-product col-sm-12 m-2 no-shadow">
               <% if food.photo.blank? %>
             <img src="https://media.istockphoto.com/photos/food-backgrounds-table-filled-with-large-variety-of-food-picture-id1155240408?k=20&m=1155240408&s=612x612&w=0&h=Zvr3TwVQ-wlfBnvGrgJCtv-_P_LUcIK301rCygnirbk=" alt="VR Zone">
             <% else %>
             <%= cl_image_tag food.photo.key, height: 100, width: 100, crop: :fill %>
             <% end %>
-            <div class="card-product-infos">
+            <div class="card-product-infos ">
               <h2 class="name1"><%= food.name %></h2>
               <p class="description"><%= food.description %></p>
               <h2 class="price"><%= food.price %></h2>
@@ -28,14 +28,14 @@
     <% end %>
   </div>
 
-  <div class="d-flex justify-content-center p-3">
-      <button type="button" class="d-flex btn mb-3" data-bs-toggle="modal" data-bs-target="#basket">
+  <div class="d-flex justify-content-center p-1 vw-100 position-absolute bottom-0">
+      <button style="align-items: baseline" type="button" class="d-flex btn basket mb-3 p-2" data-bs-toggle="modal" data-bs-target="#basket">
       View Basket
-    <p style="margin-left: 5px">(<p class="ml-5" data-order-target="quantity">0</p>)</p>
+      <p style="width: 25px; height: 25px; margin-bottom: 0; color:black" class="rounded-circle bg-white" data-order-target="quantity">0</p>
       </button>
   </div>
     <div class="d-flex justify-content-center">
-      <p><p style="margin-right: 5px">Total Price:</p><p data-order-target="price" style="margin-right: 5px">0</p>AED</p>
+      <%# <p><p style="margin-right: 5px">Total Price:</p><p data-order-target="price" style="margin-right: 5px">0</p>AED</p> %>
     </div>
   <%= render 'modal'%>
 </div>

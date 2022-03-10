@@ -34,11 +34,6 @@ body {
   text-decoration: none;
 }
 
-.btn {
-  color: white;
-  background-color: #fd0d5fd4;
-  border: #fd0d5fd4;
-}
 
 
 footer {
@@ -47,12 +42,17 @@ footer {
   width: 100%;
 }
 
+// .btn {
+//   color: white;
+//   background-color: #fd0d5fd4;
+//   border: #fd0d5fd4;
+// }
 
-.btn.order {
-  position: absolute;
-  bottom: 0px;
-  width: 80%;
-}
+// .btn.order {
+//   position: absolute;
+//   bottom: 0px;
+//   width: 80%;
+// }
 
 .fa-plus {
   position: absolute;
