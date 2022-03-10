@@ -32,17 +32,17 @@ export default class extends Controller {
       element.innerText = (parseInt(element.innerText)) + 1;
     })
 
-    console.log(event.target.parentElement.querySelector('.name1').innerText)
+    console.log(event.target.parentElement.parentElement.querySelector('.name1').innerText)
     let modalHTML = '<div>'
     this.foodsArray.forEach((obj) => {
-      modalHTML += `  <div class="card-product col-sm-12 d-flex justify-content-between">
+      modalHTML += `  <div class="card-product col-sm-12 d-flex justify-content-between no-shadow">
     <div class="card-product-infos">
       <h2>${obj.name}</h2>
       <p>${obj.description}</p>
     </div>
       <div class="mr-2" style="margin-right: 17px">
         <h2>Quantity</h2>
-        <p class="fs-4 border border-3 rounded-4 p-1 text-center"> ${obj.quantity}</p>
+        <p class="fs-4 rounded-4 p-1 text-center"> ${obj.quantity}</p>
       </div>
     </div>`
     })
@@ -76,16 +76,16 @@ export default class extends Controller {
     this.priceTarget.innerText = price
 
     console.log(event.target.parentElement.parentElement.querySelector('.name1').innerText)
-    let modalHTML = '<div class="container" >'
+    let modalHTML = '<div>'
     this.foodsArray.forEach((obj) => {
-      modalHTML += `  <div class="card-product col-sm-12 m-2 d-flex justify-content-between">
+      modalHTML += `  <div class="card-product col-sm-12 d-flex justify-content-between no-shadow">
     <div class="card-product-infos">
       <h2>${obj.name}</h2>
       <p>${obj.description}</p>
     </div>
-      <div class="mr-2">
+      <div class="mr-2" style="margin-right: 17px">
         <h2>Quantity</h2>
-        <p class="fs-4 border border-3 rounded-4 p-1"> ${obj.quantity}</p>
+        <p class="fs-4 rounded-4 p-1 text-center"> ${obj.quantity}</p>
       </div>
     </div>`
     })
