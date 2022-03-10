@@ -90,13 +90,22 @@ i {
 
 .btn.rc {
   border-radius: 50px;
+  margin-top: 50px !important;
 }
 
 .btn.pay {
   border-radius: 50px;
   background-color: black !important;
+}
 
 .btn-request {
   color: black;
   background-color: gold;
+  &:hover {
+    color: white;
+  }
+}
+
+.btn.checkout {
+  background-color: black !important;
 }
