@@ -67,8 +67,8 @@ export default class extends Controller {
   var archiveOrDelete = function( clickBtn, notificationCard ){
     if( clickBtn.classList.contains( 'archive' ) ){
       notificationCard.classList.add( 'archive' );
-      pending.innerText = "29"
-      processed.innerText = "16"
+      pending.innerText = "4"
+      processed.innerText = "31"
     } else if( clickBtn.classList.contains( 'delete' ) ){
       notificationCard.classList.add( 'delete' );
       let requestId = document.getElementById( 'demo' ).textContent;
