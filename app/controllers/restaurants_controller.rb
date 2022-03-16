@@ -10,12 +10,15 @@ class RestaurantsController < ApplicationController
     @waiters = Waiter.where(restaurant: @restaurants)
     @foods = Food.where(restaurant: @restaurants)
     @restaurant = @restaurants.first
-    @requests = Request.all
-    @requests_array = []
-    @requests.each do |request|
-      @requests_array << request
+    @requests = []
+    @covers.each do |cover|
+      cover.orders.each do |order|
+        order.requests.each do |request|
+          @requests << request
+        end
+      end
     end
-    @requests_sorted = @requests_array.sort_by { |request| request.created_at }.reverse
+    @requests_sorted = @requests.sort_by { |request| request.created_at }.reverse
     @orders = []
     @covers.each do |cover|
       cover.orders.each do |order|
@@ -23,7 +26,6 @@ class RestaurantsController < ApplicationController
       end
     end
     @orders_sorted = @orders.sort_by { |order| order.created_at }.reverse
-
   end
 
   def show
