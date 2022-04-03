@@ -33,21 +33,7 @@ export default class extends Controller {
     })
 
     console.log(event.target.parentElement.parentElement.querySelector('.name1').innerText)
-    let modalHTML = '<div>'
-    this.foodsArray.forEach((obj) => {
-      modalHTML += `  <div class="card-product col-sm-12 d-flex justify-content-between no-shadow">
-    <div class="card-product-infos">
-      <h2>${obj.name}</h2>
-      <p>${obj.description}</p>
-    </div>
-      <div class="mr-2" style="margin-right: 17px">
-        <h2>Quantity</h2>
-        <p class="fs-4 rounded-4 p-1 text-center"> ${obj.quantity}</p>
-      </div>
-    </div>`
-    })
-    modalHTML += ` </div>`
-    this.modalTarget.innerHTML = modalHTML
+    this.populateModal()
   }
 
   decrease(event) {
@@ -76,6 +62,10 @@ export default class extends Controller {
     this.priceTarget.innerText = price
 
     console.log(event.target.parentElement.parentElement.querySelector('.name1').innerText)
+    this.populateModal()
+  }
+
+  populateModal() {
     let modalHTML = '<div>'
     this.foodsArray.forEach((obj) => {
       modalHTML += `  <div class="card-product col-sm-12 d-flex justify-content-between no-shadow">
@@ -92,7 +82,6 @@ export default class extends Controller {
     modalHTML += ` </div>`
     this.modalTarget.innerHTML = modalHTML
   }
-
   submit() {
     if (window.location.search.includes('order_id')) {
       const urlSearchParams = new URLSearchParams(window.location.search);
@@ -140,4 +129,5 @@ export default class extends Controller {
         window.location.href = `/orders/${order.id}`;
       })
   }
+
 }
