@@ -6,6 +6,7 @@
       <div class="contentBx">
         <h2>Table: <%= cover.table_number %></h2>
         <h3>Assigned to: <%=  cover.waiter.name  %></h3>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://hangry42.herokuapp.com/restaurants/<%= cover.restaurant.id %>?cover_id=<%= cover.id %>">
         <%= link_to edit_restaurant_cover_path(cover.restaurant, cover) do %>
           <i class="fa-solid fa-pen-to-square"></i>
         <% end %>
