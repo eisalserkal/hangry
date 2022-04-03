@@ -94,27 +94,17 @@ export default class extends Controller {
 
   postOrder() {
     const url = '/orders'
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        orders: this.foodsArray,
-        cover_id: this.coverIdValue
-      })
-    }).then(response => response.json())
-      .then(order => {
-        console.log(order);
-        window.location.href = `/orders/${order.id}`;
-      })
+    this.fetchOrder(url, 'POST')
   }
 
   patchOrder(orderId) {
     const url = `/orders/${orderId}`
+    this.fetchOrder(url, 'PATCH')
+  }
+
+  fetchOrder(url, method) {
     fetch(url, {
-      method: 'PATCH',
+      method: method,
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json"
